@@ -7,7 +7,7 @@ class TimeHandler : public QObject
 {
     Q_OBJECT
 public:
-    explicit TimeHandler(QObject *parent = 0);
+    explicit TimeHandler(QObject *parent = nullptr);
 
 signals:
 

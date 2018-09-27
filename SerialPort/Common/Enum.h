@@ -21,29 +21,32 @@ public:
         DP_YEAR,
 
         DP_PORTCOM,
-        DP_FROM_PORTCOM,        
+        DP_FROM_PORTCOM,
+        DP_SERIALPORT_STATUS,
         DP_SERIALPORT_TEST_CONNECTION,
 
         DP_NETWORK,
         DP_FROM_NETWORK,
 
-        DP_SERIALPORT_PORTNAME,
-        DP_SERIALPORT_STATUS
-
    }DatapoolID;
 
      typedef enum _HMIEvent{
+        /* Show popup */
         HMI_HOME_SCREEN,
         HMI_CONNECTION_PORTCOM_SCREEN,
         HMI_CONNECTION_NETWORK_SCREEN,
         HMI_DATA_VIEW_SCREEN,
+
+        /* Show popup */
+        HMI_COMMON_POPUP,
         HMI_HIDE_POPUP,
         HMI_CONNECTED_POPUP,
         HMI_DISCONNECTED_POPUP,
-        HMI_REQUEST_COMMON_POPUP,
 
+        /* Chang data */
         HMI_TAB_SELECT,
-        HMI_TEST_CONNECTIONS_SERIALPORT
+        HMI_TEST_CONNECTIONS_SERIALPORT,
+        HMI_SEND_DATA_SERIALPORT
 
     }HMIEvent;
 };

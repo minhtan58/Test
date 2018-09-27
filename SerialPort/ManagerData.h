@@ -14,7 +14,7 @@ class ManagerData : public QObject
 {
     Q_OBJECT
 public:
-    explicit ManagerData(QObject *parent = 0);
+    explicit ManagerData(QObject *parent = nullptr);
     static ManagerData* getInstance();
 
     QString getData(int dpId);

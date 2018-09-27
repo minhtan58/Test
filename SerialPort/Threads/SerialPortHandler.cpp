@@ -13,18 +13,18 @@ void SerialPortHandler::readDataType() {
 }
 
 void SerialPortHandler::readData(int dpId) {
-    QString value = m_serialPort->getData(dpId);
+    QString value = m_serialPort->getData();
     qDebug() << value;
     switch (dpId) {
     case EnumID::DP_FROM_PORTCOM : {
         SETDPDATA(EnumID::DP_PORTCOM, value);
-        qDebug() << "OK";
+        qDebug() << "OK-1";
         break;
     }
 
     case EnumID::DP_FROM_NETWORK : {
         SETDPDATA(EnumID::DP_NETWORK, value);
-        qDebug() << "OK1";
+        qDebug() << "OK-2";
         break;
     }
 
@@ -36,14 +36,13 @@ void SerialPortHandler::readData(int dpId) {
 void SerialPortHandler::eventHandler(QString objectName, int eventId, QString param) {
     Q_UNUSED(objectName)
     switch (eventId) {
-    case EnumID::HMI_TAB_SELECT: {
-        break;
-    }
     case EnumID::HMI_TEST_CONNECTIONS_SERIALPORT: {
-        //QStringList paramList = getListParam(param);
-        //SENDEVENT("" , EnumID::HMI_REQUEST_COMMON_POPUP, "3000,Connecting...");
         SETDPDATA(EnumID::DP_SERIALPORT_STATUS, "Connecting...");
         m_serialPort->openSerialPort(param);
+        break;
+    }
+    case EnumID::HMI_SEND_DATA_SERIALPORT: {
+        m_serialPort->closeSerialPort();
         break;
     }
     default:

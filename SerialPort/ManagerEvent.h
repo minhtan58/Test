@@ -18,7 +18,7 @@ class ManagerEvent : public QObject
 {
     Q_OBJECT
 public:
-    explicit ManagerEvent(QObject *parent = 0);
+    explicit ManagerEvent(QObject *parent = nullptr);
     QQuickItem *m_screenContainer = nullptr;
     void sendEvent(int EnumID, QString params);
     void initWindow();

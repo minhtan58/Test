@@ -2,8 +2,8 @@
 
 ScreenAdapter::ScreenAdapter(QObject *container, QObject *parent)
     : QObject(parent)
-    , m_screenContainer(container)
     , m_screenId(-1)
+    , m_screenContainer(container)
 {
     //m_screenContainer = m_engine.rootObjects().at(0)->findChild<QQuickItem*>("screenContainer");
 }
@@ -56,5 +56,14 @@ void ScreenAdapter::initAppData() {
 }
 
 void ScreenAdapter::updateAppdata(int dpid) {
-
+    switch (dpid) {
+    case EnumID::DP_FROM_PORTCOM: {
+        if(m_screenId == ICS_DATA_VIEW) {
+            SETPROPERTY("data_portcom", "text", GETDPDATA(EnumID::DP_PORTCOM));
+        }
+        break;
+    }
+    default:
+        break;
+    }
 }

@@ -39,7 +39,7 @@ void ManagerData::setData(int dpid, QString value)
             return;
         }
     } else {
-        qDebug() << "DPID: %d Incorrect";
+        qDebug() << "DPID:" << dpid << "Incorrect";
     }
 }
 

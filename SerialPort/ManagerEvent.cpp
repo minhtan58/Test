@@ -11,16 +11,10 @@ void ManagerEvent::initWindow(){
     m_engine.rootContext()->setContextProperty("UIBridge", UIBridge::getInstance());   //Tao cau noi giua QML va C++
     m_engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
-    m_mySerialPort = new MySerialPort(this);
-    m_engine.rootContext()->setContextProperty("MySerialPort", m_mySerialPort);
-
     m_myTcpSocket = new MyTcpSocket(this);
     m_engine.rootContext()->setContextProperty("MyTcpSocket", m_myTcpSocket);
 
     connect(UIBridge::getInstance(), SIGNAL(hmiEvent(QString, int, QString)), this, SLOT(hmiHandle(QString, int,QString)));
-
-//    m_screenContainer = m_engine.rootObjects().at(0)->findChild<QQuickItem*>("screenContainer");
-//    m_screenContainer->setProperty("source", "qrc:/Screen/home.qml");
 
     m_screenAdapter = new ScreenAdapter(m_engine.rootObjects().at(0)->findChild<QQuickItem*>("screenContainer"), this);
     m_baseThreads->start();

@@ -15,7 +15,7 @@ class ScreenAdapter : public QObject
 {
     Q_OBJECT
 public:
-    explicit ScreenAdapter(QObject *container, QObject *parent = 0);
+    explicit ScreenAdapter(QObject *container, QObject *parent = nullptr);
     ~ScreenAdapter();
 
     void createScreen();
@@ -25,6 +25,7 @@ public:
 
 private:
     int m_screenId;
+    QQmlApplicationEngine *m_qmAppEngine = nullptr;
     QObject* m_screenContainer = nullptr;
     QObject* m_screenView = nullptr;
 

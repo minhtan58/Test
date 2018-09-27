@@ -11,7 +11,7 @@ class MyTcpSocket : public QObject
     Q_OBJECT
     Q_PROPERTY(QString message READ message WRITE setMessage NOTIFY messageChanged)
 public:
-    explicit MyTcpSocket(QObject *parent = 0);
+    explicit MyTcpSocket(QObject *parent = nullptr);
     Q_INVOKABLE void doConnect(QString ipAdress,int port);
     QString message() const;
 

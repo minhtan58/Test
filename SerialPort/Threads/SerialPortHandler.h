@@ -24,7 +24,6 @@ public slots:
 
 private:
     MySerialPort *m_serialPort = nullptr;
-
     void readData(int ampType);
 };
 
@@ -39,7 +38,6 @@ protected:
         qDebug() << "Start";
         SerialPortHandler handler;
         connect(UIBridge::getInstance(), SIGNAL(hmiEvent(QString,int,QString)), &handler, SLOT(eventHandler(QString,int,QString)));
-        //connect(ManagerData::getInstance(), SIGNAL(dataChanged(int)), &handler, SLOT(updateAppData(int)));
         exec();
     }
 };

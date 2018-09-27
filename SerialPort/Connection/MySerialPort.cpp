@@ -10,30 +10,6 @@ MySerialPort::MySerialPort(QObject *parent) : QObject(parent)
     m_updateStatus->start(5000);
 }
 
-//void MySerialPort::connectSerialPort() {
-//    if(m_serial->isOpen()) {
-//        if(m_serial->portName() != GETDPDATA(EnumID::DP_SERIALPORT_PORTNAME)) {
-//            m_serial->close();
-//        } else {
-//            return;
-//        }
-//    }
-
-//    if(!m_serial->isOpen()) {
-//        m_serial->setPortName(GETDPDATA(EnumID::DP_SERIALPORT_PORTNAME));
-//        if(m_serial->open(QIODevice::ReadWrite)) {
-//            qDebug() << "Connected to " << m_serial->portName().toStdString().data();
-//            connect(m_serial, SIGNAL(readyRead()), this, SLOT(readData()));
-//            SETDPDATA(EnumID::DP_SERIALPORT_STATUS, "1");
-//        } else {
-//            qDebug() << "Can't connect to " << m_serial->portName().toStdString().data();
-//            SETDPDATA(EnumID::DP_SERIALPORT_STATUS, "0");
-//        }
-//    } else{
-//        SETDPDATA(EnumID::DP_SERIALPORT_STATUS, "0");
-//    }
-//}
-
 void MySerialPort::readData() {
    m_serial->waitForReadyRead(200);
    QByteArray data = m_serial->readAll();
@@ -67,30 +43,15 @@ void MySerialPort::openSerialPort(QString portCom) {
 void MySerialPort::closeSerialPort() {
     if (m_serial->isOpen())
         m_serial->close();
-
-    showStatus(tr("Disconnected"));
 }
 
 void MySerialPort::writeData(const QByteArray &data) {
     m_serial->write(data);
 }
 
-QString MySerialPort::message() const {
+QString MySerialPort::getData() const {
     return m_dataChange;
 }
-
-QString MySerialPort::getData(int dpId) const {
-    return m_dataChange;
-}
-
-void MySerialPort::setMessage(const QString &m) {
-        if (m_dataChange == m)
-            return;
-        m_dataChange = m;
-        emit messageChanged();
-}
-
-
 
 void MySerialPort::handleError(QSerialPort::SerialPortError error) {
     if (error == QSerialPort::ResourceError) {
@@ -98,6 +59,26 @@ void MySerialPort::handleError(QSerialPort::SerialPortError error) {
     }
 }
 
-void MySerialPort::showStatus(const QString &message) {
-    qDebug() << message;
-}
+//void MySerialPort::connectSerialPort() {
+//    if(m_serial->isOpen()) {
+//        if(m_serial->portName() != GETDPDATA(EnumID::DP_SERIALPORT_PORTNAME)) {
+//            m_serial->close();
+//        } else {
+//            return;
+//        }
+//    }
+
+//    if(!m_serial->isOpen()) {
+//        m_serial->setPortName(GETDPDATA(EnumID::DP_SERIALPORT_PORTNAME));
+//        if(m_serial->open(QIODevice::ReadWrite)) {
+//            qDebug() << "Connected to " << m_serial->portName().toStdString().data();
+//            connect(m_serial, SIGNAL(readyRead()), this, SLOT(readData()));
+//            SETDPDATA(EnumID::DP_SERIALPORT_STATUS, "1");
+//        } else {
+//            qDebug() << "Can't connect to " << m_serial->portName().toStdString().data();
+//            SETDPDATA(EnumID::DP_SERIALPORT_STATUS, "0");
+//        }
+//    } else{
+//        SETDPDATA(EnumID::DP_SERIALPORT_STATUS, "0");
+//    }
+//}

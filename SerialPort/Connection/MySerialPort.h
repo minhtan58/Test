@@ -12,12 +12,10 @@
 class MySerialPort : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString message READ message WRITE setMessage NOTIFY messageChanged)
 
 public:
-    explicit MySerialPort(QObject *parent = 0);
-    QString message() const;
-    QString getData(int dpId) const;
+    explicit MySerialPort(QObject *parent = nullptr);
+    QString getData() const;
 
 signals:
     void messageChanged();
@@ -26,14 +24,12 @@ signals:
 public slots:
     void readData();
     void handleError(QSerialPort::SerialPortError error);
-    void setMessage(const QString &m);
     void openSerialPort(QString portCom);
     void closeSerialPort();
     void writeData(const QByteArray &data);
 
 private:
     QString m_dataChange;
-    void showStatus(const QString &status);
     QSerialPort *m_serial = nullptr;
     QTimer *m_updateStatus = nullptr;
 };

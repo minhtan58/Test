@@ -115,8 +115,7 @@ Item {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                MySerialPort.writeData(data_send.text);
-                //show_notification.text = "Stop Connecting to " + UIBridge.getIPAddress()
+                UIBridge.hmiEvent(this.objectName, EnumID.HMI_SEND_DATA_SERIALPORT, data_send.text)
             }
         }
     }

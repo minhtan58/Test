@@ -8,7 +8,7 @@ class UIBridge : public QObject
 {
     Q_OBJECT
 public:
-    explicit UIBridge(QObject *parent = 0);
+    explicit UIBridge(QObject *parent = nullptr);
     static UIBridge *getInstance();
     ~UIBridge();
 
