@@ -27,6 +27,7 @@ Item {
         border.color: "black"
         Text {
             id: data_portcom
+            objectName: "data_portcom"
             anchors.centerIn: parent
         }
     }

@@ -4,6 +4,7 @@ SerialPortHandler::SerialPortHandler(QObject *parent) : QObject(parent)
 {
     m_serialPort = new MySerialPort();
     connect(m_serialPort, SIGNAL(readComplete()), this, SLOT(readDataType()), Qt::UniqueConnection);
+    SETDPDATA(EnumID::DP_SERIALPORT_STATUS, "Connect");
 }
 
 void SerialPortHandler::readDataType() {
@@ -42,7 +43,7 @@ void SerialPortHandler::eventHandler(QString objectName, int eventId, QString pa
         break;
     }
     case EnumID::HMI_SEND_DATA_SERIALPORT: {
-        m_serialPort->closeSerialPort();
+        m_serialPort->writeData(param.toUtf8());
         break;
     }
     default:

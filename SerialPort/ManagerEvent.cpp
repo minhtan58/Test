@@ -29,7 +29,7 @@ void ManagerEvent::showScreen(int screenId){
 
     m_screenAdapter->setScreenId(screenId);
     m_screenAdapter->createScreen();
-
+    connect(ManagerData::getInstance(), SIGNAL(dataChanged(int)), m_screenAdapter, SLOT(updateAppdata(int)), Qt::UniqueConnection);
 }
 
 void ManagerEvent::showOverlay(int overlayId, int timeout, int layer, QString message){

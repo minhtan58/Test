@@ -3,11 +3,8 @@
 MySerialPort::MySerialPort(QObject *parent) : QObject(parent)
 {
     m_serial = new QSerialPort(this);
-    m_updateStatus = new QTimer(this);
 
     connect(m_serial, SIGNAL(error(QSerialPort::SerialPortError)), this, SLOT(handleError(QSerialPort::SerialPortError)));
-    connect(m_updateStatus, SIGNAL(timeout()), this, SLOT(sltUpdateStatus()), Qt::UniqueConnection);
-    m_updateStatus->start(5000);
 }
 
 void MySerialPort::readData() {
@@ -19,11 +16,9 @@ void MySerialPort::readData() {
 }
 
 void MySerialPort::openSerialPort(QString portCom) {
-    if(m_serial->portName() == portCom) {
-        if(m_serial->isOpen()) {
-            SETDPDATA(EnumID::DP_SERIALPORT_STATUS, "Connected");
-            return;
-        }
+    if(m_serial->isOpen()) {
+        closeSerialPort();
+        return;
     }
 
     m_serial->setPortName(portCom);
@@ -33,16 +28,17 @@ void MySerialPort::openSerialPort(QString portCom) {
     m_serial->setStopBits(QSerialPort::OneStop);
     m_serial->setFlowControl(QSerialPort::NoFlowControl);
     if (m_serial->open(QIODevice::ReadWrite)) {
-        SETDPDATA(EnumID::DP_SERIALPORT_STATUS, "Connected");
+        SETDPDATA(EnumID::DP_SERIALPORT_STATUS, "Disconnected");
         connect(m_serial, SIGNAL(readyRead()), this, SLOT(readData()));
     } else {
-        SETDPDATA(EnumID::DP_SERIALPORT_STATUS, "Disconnected");
+        SETDPDATA(EnumID::DP_SERIALPORT_STATUS, "Connect");
     }
 }
 
 void MySerialPort::closeSerialPort() {
     if (m_serial->isOpen())
         m_serial->close();
+    SETDPDATA(EnumID::DP_SERIALPORT_STATUS, "Connect");
 }
 
 void MySerialPort::writeData(const QByteArray &data) {
@@ -58,27 +54,3 @@ void MySerialPort::handleError(QSerialPort::SerialPortError error) {
         closeSerialPort();
     }
 }
-
-//void MySerialPort::connectSerialPort() {
-//    if(m_serial->isOpen()) {
-//        if(m_serial->portName() != GETDPDATA(EnumID::DP_SERIALPORT_PORTNAME)) {
-//            m_serial->close();
-//        } else {
-//            return;
-//        }
-//    }
-
-//    if(!m_serial->isOpen()) {
-//        m_serial->setPortName(GETDPDATA(EnumID::DP_SERIALPORT_PORTNAME));
-//        if(m_serial->open(QIODevice::ReadWrite)) {
-//            qDebug() << "Connected to " << m_serial->portName().toStdString().data();
-//            connect(m_serial, SIGNAL(readyRead()), this, SLOT(readData()));
-//            SETDPDATA(EnumID::DP_SERIALPORT_STATUS, "1");
-//        } else {
-//            qDebug() << "Can't connect to " << m_serial->portName().toStdString().data();
-//            SETDPDATA(EnumID::DP_SERIALPORT_STATUS, "0");
-//        }
-//    } else{
-//        SETDPDATA(EnumID::DP_SERIALPORT_STATUS, "0");
-//    }
-//}

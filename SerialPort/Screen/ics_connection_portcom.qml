@@ -50,7 +50,6 @@ Item {
             id: connection_status
             objectName: "connection_status"
             anchors.centerIn: parent
-            text: "Connect"
         }
         MouseArea {
             anchors.fill: parent
@@ -136,9 +135,6 @@ Item {
         y:180
         Text {
             id: show_notification
-            text: {
-                MySerialPort.message
-            }
         }
     }
 }

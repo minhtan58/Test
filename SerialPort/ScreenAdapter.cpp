@@ -56,10 +56,18 @@ void ScreenAdapter::initAppData() {
 }
 
 void ScreenAdapter::updateAppdata(int dpid) {
+    QString data = GETDPDATA(dpid);
+
     switch (dpid) {
-    case EnumID::DP_FROM_PORTCOM: {
+    case EnumID::DP_PORTCOM: {
         if(m_screenId == ICS_DATA_VIEW) {
-            SETPROPERTY("data_portcom", "text", GETDPDATA(EnumID::DP_PORTCOM));
+            SETPROPERTY("data_portcom", "text", data);
+        }
+        break;
+    }
+    case EnumID::DP_SERIALPORT_STATUS : {
+        if(m_screenId == ICS_CONNECTION_PORTCOM ) {
+            SETPROPERTY("connection_status", "text", data);
         }
         break;
     }
