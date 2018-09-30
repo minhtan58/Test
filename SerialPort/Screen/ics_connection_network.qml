@@ -74,28 +74,8 @@ Item {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                MyTcpSocket.doConnect(ip_adress.text,Number(port_to_connect.text));
-                //show_notification.text = "Stop Connecting to " + UIBridge.getIPAddress()
-            }
-        }
-    }
-
-    Rectangle {
-        id: disconnect_server_button
-        x: 300
-        y: 60
-        width: 70
-        height: 20
-        border.color: "black"
-        Text {
-            anchors.centerIn: parent
-            text: qsTr("Disconnect")
-        }
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                MyTcpSocket.disconnected();
-                //show_notification.text = "Stop Connecting to " + UIBridge.getIPAddress()
+                UIBridge.hmiEvent(this.objectName, EnumID.HMI_TEST_CONNECTIONS_NETWORK, ip_adress.text
+                                  + "," + port_to_connect.text)
             }
         }
     }
@@ -135,8 +115,7 @@ Item {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                MyTcpSocket.writeData(data_send.text);
-                //show_notification.text = "Stop Connecting to " + UIBridge.getIPAddress()
+                UIBridge.hmiEvent(this.objectName, EnumID.HMI_SEND_DATA_NETWORK, data_send.text)
             }
         }
     }
@@ -149,7 +128,6 @@ Item {
     }
 
     Rectangle {
-        //property string mytext: ""
         id: notification_Connect
         width: 300
         height: 150
@@ -158,9 +136,6 @@ Item {
         y:180
         Text {
             id: show_notification
-            text: {
-                MyTcpSocket.message
-            }
         }
     }
 }

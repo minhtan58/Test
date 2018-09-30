@@ -23,10 +23,10 @@ public:
         DP_PORTCOM,
         DP_FROM_PORTCOM,
         DP_SERIALPORT_STATUS,
-        DP_SERIALPORT_TEST_CONNECTION,
 
         DP_NETWORK,
         DP_FROM_NETWORK,
+        DP_SERIALPORT_STATUS,
 
    }DatapoolID;
 
@@ -43,15 +43,17 @@ public:
         HMI_CONNECTED_POPUP,
         HMI_DISCONNECTED_POPUP,
 
-        /* Chang data */
-        HMI_TAB_SELECT,
+        /* Connection */
         HMI_TEST_CONNECTIONS_SERIALPORT,
-        HMI_SEND_DATA_SERIALPORT
+        HMI_SEND_DATA_SERIALPORT,
+        HMI_TEST_CONNECTIONS_NETWORK,
+        HMI_SEND_DATA_NETWORK
 
     }HMIEvent;
 };
 
 //***********************************************************************************************//
+
 enum  ScreenID{
     ICS_HOME = 0x0000,
     ICS_CONNECTION_PORTCOM,
@@ -72,6 +74,7 @@ const QHash<int, QString> mapScreen = {
     {ICS_CONNECT_POPUP,                    "qrc:/Screen/ics_connect_popup.qml"                   },
     {ICS_DISCONNECT_POPUP,                 "qrc:/Screen/ics_disconnect_popup.qml"                },
 };
+
 //***********************************************************************************************//
 
 enum OverlayZ{
