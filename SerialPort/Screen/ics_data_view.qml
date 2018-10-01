@@ -42,6 +42,7 @@ Item {
         border.color: "black"
         Text {
             id: data_network
+            objectName: "data_network"
             anchors.centerIn: parent
         }
     }

@@ -15,16 +15,16 @@ class SerialPortHandler : public QObject
     Q_OBJECT
 public:
     explicit SerialPortHandler(QObject *parent = nullptr);
+    //~SerialPortHandler();
 
 signals:
 
 public slots:
-    void readDataType();
     void eventHandler(QString objectName, int eventId, QString param);
 
 private:
     MySerialPort *m_serialPort = nullptr;
-    void readData(int ampType);
+    void setData();
 };
 
 class SerialPortHandlerThread : public QThread

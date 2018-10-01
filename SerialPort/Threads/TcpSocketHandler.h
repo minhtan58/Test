@@ -14,17 +14,16 @@ class TcpSocketHandler : public QObject
     Q_OBJECT
 public:
     explicit TcpSocketHandler(QObject *parent = nullptr);
-    ~TcpSocketHandler();
+    //~TcpSocketHandler();
 
 signals:
 
 public slots:
     void eventHandler(QString objectName, int eventId, QString param);
-    void sendDataToServer();
 
 private:
     MyTcpSocket *m_tcpSocket = nullptr;
-    void readData();
+    void setData();
 };
 
 class TcpSocketHandlerThread : public QThread
@@ -35,6 +34,7 @@ public:
 
 protected:
     void run() {
+        qDebug() << "Start";
         TcpSocketHandler handler;
         connect(UIBridge::getInstance(), SIGNAL(hmiEvent(QString,int,QString)), &handler, SLOT(eventHandler(QString,int,QString)));
         exec();

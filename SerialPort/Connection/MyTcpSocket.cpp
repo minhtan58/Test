@@ -2,30 +2,42 @@
 
 MyTcpSocket::MyTcpSocket(QObject *parent) : QObject(parent)
 {
-    m_tcpSocket = new QTcpSocket(this);
+    m_socket = new QTcpSocket(this);
 }
 
-void MyTcpSocket::doConnect(QString ipAdress,int port)
-{
+void MyTcpSocket::doConnect(QString ipAdress,int port) {
+    if(m_socket->isOpen()) {
+        disconnected();
+        return;
+    }
     qDebug() << "Connecting...";
-    if (m_tcpSocket->state() != QTcpSocket::ConnectedState) {
-        qDebug() << "Reconnect to host";
-        m_tcpSocket->connectToHost(ipAdress, port);
-        m_tcpSocket->waitForConnected(1000);
+    if (m_socket->state() != QTcpSocket::ConnectedState) {
+        m_socket->connectToHost(ipAdress, quint16(port));
+        m_socket->waitForConnected(1000);
+        qDebug() << "Connected";
+        SETDPDATA(EnumID::DP_NETWORK_STATUS, "Disconnected");
+        connect(m_socket, SIGNAL(readyRead()), this, SLOT(readData()));
+    } else {
+        SETDPDATA(EnumID::DP_NETWORK_STATUS, "Connect");
     }
 }
 
 void MyTcpSocket::disconnected() {
     qDebug() << "Disconnected";
-    m_tcpSocket->disconnectFromHost();
+    m_socket->disconnectFromHost();
+    SETDPDATA(EnumID::DP_NETWORK_STATUS, "Connect");
 }
 
 QString MyTcpSocket::getData() const {
     return m_dataChange;
 }
 
-void MyTcpSocket::readyRead(){
-    QByteArray data = m_tcpSocket->readAll();
+void MyTcpSocket::senData(const QByteArray &data) {
+    m_socket->write(data);
+}
+
+void MyTcpSocket::readData() {
+    QByteArray data = m_socket->readAll();
     m_dataChange = QString::fromUtf8(data);
     qDebug() << data;
     emit readComplete();

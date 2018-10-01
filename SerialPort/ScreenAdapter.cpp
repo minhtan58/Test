@@ -37,17 +37,16 @@ void ScreenAdapter::initAppData() {
     }
     case ICS_CONNECTION_PORTCOM: {
         SETPROPERTY("connection_status", "text", GETDPDATA(EnumID::DP_SERIALPORT_STATUS));
-
+        SETPROPERTY("viewData_portcom", "text", GETDPDATA(EnumID::DP_PORTCOM));
         break;
     }
     case ICS_CONNECTION_NETWORK: {
-        SETPROPERTY("viewO2", "textValue", GETDPDATA(EnumID::DP_NETWORK));
-
+        SETPROPERTY("connection_status", "text", GETDPDATA(EnumID::DP_SERIALPORT_STATUS));
+        SETPROPERTY("viewData_network", "text", GETDPDATA(EnumID::DP_NETWORK));
         break;
     }
     case ICS_HOME: {
         SETPROPERTY("viewO2", "textValue", GETDPDATA(EnumID::DP_DATE));
-
         break;
     }
     default:
@@ -62,11 +61,27 @@ void ScreenAdapter::updateAppdata(int dpid) {
     case EnumID::DP_PORTCOM: {
         if(m_screenId == ICS_DATA_VIEW) {
             SETPROPERTY("data_portcom", "text", data);
+        } else if (m_screenId == ICS_CONNECTION_PORTCOM) {
+            SETPROPERTY("viewData_portcom", "text", data);
         }
         break;
     }
     case EnumID::DP_SERIALPORT_STATUS : {
         if(m_screenId == ICS_CONNECTION_PORTCOM ) {
+            SETPROPERTY("connection_status", "text", data);
+        } else if (m_screenId == ICS_CONNECTION_PORTCOM) {
+            SETPROPERTY("viewData_network", "text", data);
+        }
+        break;
+    }
+    case EnumID::DP_NETWORK: {
+        if(m_screenId == ICS_DATA_VIEW) {
+            SETPROPERTY("data_network", "text", data);
+        }
+        break;
+    }
+    case EnumID::DP_NETWORK_STATUS : {
+        if(m_screenId == ICS_CONNECTION_NETWORK ) {
             SETPROPERTY("connection_status", "text", data);
         }
         break;

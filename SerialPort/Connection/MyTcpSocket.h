@@ -6,29 +6,28 @@
 #include <QAbstractSocket>
 #include <QDebug>
 
+#include "ManagerData.h"
+#include "Defines.h"
+
 class MyTcpSocket : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString message READ message WRITE setMessage NOTIFY messageChanged)
 public:
     explicit MyTcpSocket(QObject *parent = nullptr);
     void doConnect(QString ipAdress,int port);
     QString getData() const;
 
 private:
-    QTcpSocket *m_tcpSocket = nullptr;
+    QTcpSocket *m_socket = nullptr;
     QString m_dataChange;
 
 signals:
     void readComplete();
 
 public slots:
-    void connected();
     void disconnected();
-    void bytesWritten(qint64 bytes);
-    void readyRead();
+    void readData();
     void senData(const QByteArray &data);
-    void setMessage(const QString &m);
 };
 
 #endif // MYTCPSOCKET_H

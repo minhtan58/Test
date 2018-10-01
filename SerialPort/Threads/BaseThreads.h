@@ -4,6 +4,7 @@
 #include <QObject>
 
 #include "SerialPortHandler.h"
+#include "TcpSocketHandler.h"
 
 class BaseThreads : public QObject
 {
@@ -15,6 +16,7 @@ public:
 
 private:
     SerialPortHandlerThread *m_serialPortHandler = nullptr;
+    TcpSocketHandlerThread *m_tcpSocketHandler = nullptr;
 
 signals:
 

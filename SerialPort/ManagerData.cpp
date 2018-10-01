@@ -1,8 +1,8 @@
 #include "ManagerData.h"
 
 #define INITDATA(param) \
-    m_datapool.insert((int)param, (QString)""); \
-    m_dpName.insert((int)param, ((QString)#param).mid(10))
+    m_datapool.insert(int(param), QString("")); \
+    m_dpName.insert(int(param), (QString(#param)).mid(10))
 
 ManagerData* ManagerData::m_managerData = nullptr;
 
@@ -60,9 +60,8 @@ void ManagerData::initData()
     INITDATA(EnumID::DP_DAY);
     INITDATA(EnumID::DP_MONTH);
     INITDATA(EnumID::DP_YEAR);
-    INITDATA(EnumID::DP_FROM_PORTCOM);
-    INITDATA(EnumID::DP_FROM_NETWORK);
     INITDATA(EnumID::DP_PORTCOM);
     INITDATA(EnumID::DP_NETWORK);
     INITDATA(EnumID::DP_SERIALPORT_STATUS);
+    INITDATA(EnumID::DP_NETWORK_STATUS);
 }

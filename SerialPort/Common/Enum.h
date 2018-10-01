@@ -21,11 +21,9 @@ public:
         DP_YEAR,
 
         DP_PORTCOM,
-        DP_FROM_PORTCOM,
         DP_SERIALPORT_STATUS,
 
         DP_NETWORK,
-        DP_FROM_NETWORK,
         DP_NETWORK_STATUS,
 
    }DatapoolID;

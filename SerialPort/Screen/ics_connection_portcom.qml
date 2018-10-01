@@ -127,14 +127,15 @@ Item {
     }
 
     Rectangle {
-        id: notification_Connect
+        id: viewData
         width: 300
         height: 150
         border.color: "black"
         x:50
         y:180
         Text {
-            id: show_notification
+            id: viewData_portcom
+            objectName: "viewData_portcom"
         }
     }
 }

@@ -1,37 +1,18 @@
 #include "SerialPortHandler.h"
 
-SerialPortHandler::SerialPortHandler(QObject *parent) : QObject(parent)
-{
+SerialPortHandler::SerialPortHandler(QObject *parent) : QObject(parent) {
     m_serialPort = new MySerialPort();
-    connect(m_serialPort, SIGNAL(readComplete()), this, SLOT(readDataType()), Qt::UniqueConnection);
+    connect(m_serialPort, SIGNAL(readComplete()), this, SLOT(setData()), Qt::UniqueConnection);
     SETDPDATA(EnumID::DP_SERIALPORT_STATUS, "Connect");
 }
 
-void SerialPortHandler::readDataType() {
-    readData(EnumID::DP_FROM_PORTCOM);
-    readData(EnumID::DP_FROM_NETWORK);
-    qDebug() << "Okq";
-}
+//SerialPortHandler::~SerialPortHandler() {
+//}
 
-void SerialPortHandler::readData(int dpId) {
+void SerialPortHandler::setData() {
     QString value = m_serialPort->getData();
+    SETDPDATA(EnumID::DP_PORTCOM, value);
     qDebug() << value;
-    switch (dpId) {
-    case EnumID::DP_FROM_PORTCOM : {
-        SETDPDATA(EnumID::DP_PORTCOM, value);
-        qDebug() << "OK-1";
-        break;
-    }
-
-    case EnumID::DP_FROM_NETWORK : {
-        SETDPDATA(EnumID::DP_NETWORK, value);
-        qDebug() << "OK-2";
-        break;
-    }
-
-    default:
-        break;
-    }
 }
 
 void SerialPortHandler::eventHandler(QString objectName, int eventId, QString param) {
