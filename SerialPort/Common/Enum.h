@@ -26,7 +26,7 @@ public:
 
         DP_NETWORK,
         DP_FROM_NETWORK,
-        DP_SERIALPORT_STATUS,
+        DP_NETWORK_STATUS,
 
    }DatapoolID;
 

@@ -3,11 +3,10 @@
 
 #include <QObject>
 #include <QThread>
-#include <QTcpSocket>
-#include <QTimer>
-#include <QDateTime>
-#include <QProcess>
 
+#include "ManagerData.h"
+#include "Defines.h"
+#include "MyTcpSocket.h"
 #include "UIBridge.h"
 
 class TcpSocketHandler : public QObject
@@ -22,14 +21,10 @@ signals:
 public slots:
     void eventHandler(QString objectName, int eventId, QString param);
     void sendDataToServer();
-    void updateConnectionState();
 
 private:
-    QTcpSocket *m_tcpSocket = nullptr;
-    QTimer *m_updateStatus = nullptr;
-
-    void updateTime();
-    void testConnection(QString serverIP, int serverPort);
+    MyTcpSocket *m_tcpSocket = nullptr;
+    void readData();
 };
 
 class TcpSocketHandlerThread : public QThread
@@ -40,7 +35,7 @@ public:
 
 protected:
     void run() {
-        TcpSocketHandlerThread handler;
+        TcpSocketHandler handler;
         connect(UIBridge::getInstance(), SIGNAL(hmiEvent(QString,int,QString)), &handler, SLOT(eventHandler(QString,int,QString)));
         exec();
     }

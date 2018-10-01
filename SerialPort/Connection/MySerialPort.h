@@ -18,7 +18,6 @@ public:
     QString getData() const;
 
 signals:
-    void messageChanged();
     void readComplete();
 
 public slots:

@@ -12,22 +12,22 @@ class MyTcpSocket : public QObject
     Q_PROPERTY(QString message READ message WRITE setMessage NOTIFY messageChanged)
 public:
     explicit MyTcpSocket(QObject *parent = nullptr);
-    Q_INVOKABLE void doConnect(QString ipAdress,int port);
-    QString message() const;
+    void doConnect(QString ipAdress,int port);
+    QString getData() const;
 
 private:
-    QTcpSocket *socket = nullptr;
+    QTcpSocket *m_tcpSocket = nullptr;
     QString m_dataChange;
 
 signals:
-    void messageChanged();
+    void readComplete();
 
 public slots:
     void connected();
     void disconnected();
     void bytesWritten(qint64 bytes);
     void readyRead();
-    void writeData(const QByteArray &data);
+    void senData(const QByteArray &data);
     void setMessage(const QString &m);
 };
 
