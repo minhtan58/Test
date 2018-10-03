@@ -68,8 +68,9 @@ Item {
         height: 20
         border.color: "black"
         Text {
+            id: connection_status
+            objectName: "connection_status"
             anchors.centerIn: parent
-            text: qsTr("Connect")
         }
         MouseArea {
             anchors.fill: parent

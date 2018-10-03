@@ -13,6 +13,7 @@
 #include "ScreenAdapter.h"
 #include "BaseThreads.h"
 #include "SerialPortHandler.h"
+#include "QmlValues.h"
 
 class ManagerEvent : public QObject
 {
@@ -26,6 +27,7 @@ public:
 private:
     QQmlApplicationEngine m_engine;
     UIBridge *m_uiBridge;
+    QmlValues *m_qmlValue;
     MySerialPort *m_mySerialPort = nullptr;
     MyTcpSocket *m_myTcpSocket = nullptr;
     ScreenAdapter *m_screenAdapter = nullptr;

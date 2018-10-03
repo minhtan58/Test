@@ -28,7 +28,7 @@ void TcpSocketHandler::eventHandler(QString objectName, int eventId, QString par
         break;
     }
     case EnumID::HMI_SEND_DATA_NETWORK: {
-        m_tcpSocket->senData(param.toUtf8());
+        m_tcpSocket->sendData(param.toUtf8());
         break;
     }
     default:

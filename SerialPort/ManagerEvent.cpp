@@ -9,6 +9,7 @@ void ManagerEvent::initWindow(){
     m_baseThreads = new BaseThreads(this);
 
     m_engine.rootContext()->setContextProperty("UIBridge", UIBridge::getInstance());   //Tao cau noi giua QML va C++
+    m_engine.rootContext()->setContextProperty("QmlValues", m_qmlValue);
     m_engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     connect(UIBridge::getInstance(), SIGNAL(hmiEvent(QString, int, QString)), this, SLOT(hmiHandle(QString, int,QString)));

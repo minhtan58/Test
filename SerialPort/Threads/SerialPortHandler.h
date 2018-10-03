@@ -21,10 +21,11 @@ signals:
 
 public slots:
     void eventHandler(QString objectName, int eventId, QString param);
+    void setData();
 
 private:
     MySerialPort *m_serialPort = nullptr;
-    void setData();
+
 };
 
 class SerialPortHandlerThread : public QThread

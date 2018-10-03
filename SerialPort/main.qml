@@ -16,7 +16,7 @@ Window {
         Image {
             id: name
             source: "qrc:/Images/background.jpg"
-            z: EnumID.BACKGROUND
+            z: 0
         }
 
         Loader {

@@ -7,6 +7,15 @@ inline QStringList getListParam(QString params)
 {
     return params.split(",");
 }
+/********************Define value QML***********************/
+
+#define SCREEN_WIDTH    800
+#define SCREEN_HEIGHT   480
+#define Z_BACKGROUND    0
+
+
+
+/***********************************************************/
 
 #define SENDEVENT(OBJECT, EVENTID, PARAM)   UIBridge::getInstance()->sendEvent(OBJECT, EVENTID, PARAM)
 

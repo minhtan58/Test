@@ -27,7 +27,7 @@ signals:
 public slots:
     void disconnected();
     void readData();
-    void senData(const QByteArray &data);
+    void sendData(const QByteArray &data);
 };
 
 #endif // MYTCPSOCKET_H

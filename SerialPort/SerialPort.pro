@@ -22,7 +22,9 @@ SOURCES += main.cpp \
     Threads/TimeHandler.cpp \
     Threads/SerialPortHandler.cpp \
     Threads/BaseThreads.cpp \
-    Threads/TcpSocketHandler.cpp
+    Threads/TcpSocketHandler.cpp \
+    Common/QmlValues.cpp \
+    Connection/MyDatabase.cpp
 
 RESOURCES += qml.qrc
 
@@ -44,4 +46,6 @@ HEADERS += \
     Threads/TimeHandler.h \
     Threads/SerialPortHandler.h \
     Threads/BaseThreads.h \
-    Threads/TcpSocketHandler.h
+    Threads/TcpSocketHandler.h \
+    Common/QmlValues.h \
+    Connection/MyDatabase.h

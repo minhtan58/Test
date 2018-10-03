@@ -20,10 +20,10 @@ signals:
 
 public slots:
     void eventHandler(QString objectName, int eventId, QString param);
+    void setData();
 
 private:
     MyTcpSocket *m_tcpSocket = nullptr;
-    void setData();
 };
 
 class TcpSocketHandlerThread : public QThread
