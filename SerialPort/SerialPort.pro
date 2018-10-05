@@ -1,6 +1,6 @@
 TEMPLATE = app
 
-QT += qml quick serialport network
+QT += qml quick serialport sql
 CONFIG += c++11
 
 CONFIG(release, debug|release) {
@@ -24,7 +24,8 @@ SOURCES += main.cpp \
     Threads/BaseThreads.cpp \
     Threads/TcpSocketHandler.cpp \
     Common/QmlValues.cpp \
-    Connection/MyDatabase.cpp
+    Connection/MyDatabase.cpp \
+    Threads/DatabaseHandler.cpp
 
 RESOURCES += qml.qrc
 
@@ -48,4 +49,5 @@ HEADERS += \
     Threads/BaseThreads.h \
     Threads/TcpSocketHandler.h \
     Common/QmlValues.h \
-    Connection/MyDatabase.h
+    Connection/MyDatabase.h \
+    Threads/DatabaseHandlerr.h

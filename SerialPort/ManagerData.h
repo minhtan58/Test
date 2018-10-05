@@ -9,6 +9,7 @@
 #include <QMutex>
 
 #include "Enum.h"
+#include "Defines.h"
 
 class ManagerData : public QObject
 {

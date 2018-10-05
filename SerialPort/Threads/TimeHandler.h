@@ -2,6 +2,13 @@
 #define TIMEHANDLER_H
 
 #include <QObject>
+#include <QThread>
+#include <QTimer>
+#include <QDateTime>
+#include <QProcess>
+
+#include "ManagerData.h"
+#include "UIBridge.h"
 
 class TimeHandler : public QObject
 {
@@ -12,6 +19,28 @@ public:
 signals:
 
 public slots:
+    void updateSystemTime();
+    void eventHandler(QString objectName, int eventId, QString param);
+
+private:
+    QProcess *m_process = nullptr;
+};
+
+class TimeHandlerThread : public QThread
+{
+    Q_OBJECT
+public:
+    explicit TimeHandlerThread(QObject *parent = nullptr) : QThread(parent){}
+
+protected:
+    void run() {
+        QTimer updateSystemTime;
+        TimeHandler handler;
+        connect(UIBridge::getInstance(), SIGNAL(hmiEvent(QString,int,QString)), &handler, SLOT(eventHandler(QString,int,QString)));
+        connect(ManagerData::getInstance(), SIGNAL(dataChanged(int)), &handler, SLOT(updateAppData(int)));
+        updateSystemTime.start(1000);
+        exec();
+    }
 };
 
 #endif // TIMEHANDLER_H

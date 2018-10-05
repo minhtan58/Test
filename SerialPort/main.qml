@@ -16,7 +16,7 @@ Window {
         Image {
             id: name
             source: "qrc:/Images/background.jpg"
-            z: 0
+            z: QmlValues.backgroundZ
         }
 
         Loader {

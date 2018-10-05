@@ -45,7 +45,11 @@ public:
         HMI_TEST_CONNECTIONS_SERIALPORT,
         HMI_SEND_DATA_SERIALPORT,
         HMI_TEST_CONNECTIONS_NETWORK,
-        HMI_SEND_DATA_NETWORK
+        HMI_SEND_DATA_NETWORK,
+
+        /* Setting Time */
+        HMI_UPDATE_TIME_AUTOMATIC,
+        HMI_SET_DATE_TIME
 
     }HMIEvent;
 };
