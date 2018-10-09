@@ -10,5 +10,6 @@
         <file>Screen/ics_data_view.qml</file>
         <file>Images/background.jpg</file>
         <file>Screen/ics_common_popup.qml</file>
+        <file>Screen/ics_view_data_history.qml</file>
     </qresource>
 </RCC>

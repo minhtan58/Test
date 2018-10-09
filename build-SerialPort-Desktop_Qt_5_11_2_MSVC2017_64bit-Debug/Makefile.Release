@@ -11,13 +11,13 @@ MAKEFILE      = Makefile.Release
 
 CC            = cl
 CXX           = cl
-DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG_OUTPUT -DQT_QML_DEBUG -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_SERIALPORT_LIB -DQT_CORE_LIB -DNDEBUG
+DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG_OUTPUT -DQT_QML_DEBUG -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_SERIALPORT_LIB -DQT_SQL_LIB -DQT_CORE_LIB -DNDEBUG
 CFLAGS        = -nologo -Zc:wchar_t -FS -Zc:strictStrings -O2 -MD -W3 -w44456 -w44457 -w44458 $(DEFINES)
 CXXFLAGS      = -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -O2 -MD -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -EHsc $(DEFINES)
-INCPATH       = -I..\SerialPort -I. -I..\SerialPort\Common -I..\SerialPort\Connection -I..\SerialPort\Threads -IC:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include -IC:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick -IC:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui -IC:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtANGLE -IC:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml -IC:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork -IC:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSerialPort -IC:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore -Irelease -I\include -IC:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\win32-msvc 
+INCPATH       = -I..\SerialPort -I. -I..\SerialPort\Common -I..\SerialPort\Connection -I..\SerialPort\Threads -IC:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include -IC:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick -IC:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui -IC:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtANGLE -IC:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml -IC:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork -IC:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSerialPort -IC:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql -IC:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore -Irelease -I\include -IC:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\win32-msvc 
 LINKER        = link
 LFLAGS        = /NOLOGO /DYNAMICBASE /NXCOMPAT /INCREMENTAL:NO /SUBSYSTEM:WINDOWS "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'"
-LIBS          = /LIBPATH:C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\qtmain.lib /LIBPATH:C:\openssl\lib /LIBPATH:C:\Utils\my_sql\mysql-5.6.11-winx64\lib /LIBPATH:C:\Utils\postgresql\pgsql\lib shell32.lib C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5Quick.lib C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5Gui.lib C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5Qml.lib C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5Network.lib C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5SerialPort.lib C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5Core.lib 
+LIBS          = /LIBPATH:C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\qtmain.lib /LIBPATH:C:\openssl\lib /LIBPATH:C:\Utils\my_sql\mysql-5.6.11-winx64\lib /LIBPATH:C:\Utils\postgresql\pgsql\lib shell32.lib C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5Quick.lib C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5Gui.lib C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5Qml.lib C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5Network.lib C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5SerialPort.lib C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5Sql.lib C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5Core.lib 
 QMAKE         = C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\qmake.exe
 IDC           = idc
 IDL           = midl /NOLOGO
@@ -54,7 +54,11 @@ SOURCES       = ..\SerialPort\main.cpp \
 		..\SerialPort\Connection\MyTcpSocket.cpp \
 		..\SerialPort\Threads\TimeHandler.cpp \
 		..\SerialPort\Threads\SerialPortHandler.cpp \
-		..\SerialPort\Threads\BaseThreads.cpp release\qrc_qml.cpp \
+		..\SerialPort\Threads\BaseThreads.cpp \
+		..\SerialPort\Threads\TcpSocketHandler.cpp \
+		..\SerialPort\Common\QmlValues.cpp \
+		..\SerialPort\Connection\MyDatabase.cpp \
+		..\SerialPort\Threads\DatabaseHandler.cpp release\qrc_qml.cpp \
 		release\moc_ManagerEvent.cpp \
 		release\moc_UIBridge.cpp \
 		release\moc_ManagerData.cpp \
@@ -64,7 +68,11 @@ SOURCES       = ..\SerialPort\main.cpp \
 		release\moc_MyTcpSocket.cpp \
 		release\moc_TimeHandler.cpp \
 		release\moc_SerialPortHandler.cpp \
-		release\moc_BaseThreads.cpp
+		release\moc_BaseThreads.cpp \
+		release\moc_TcpSocketHandler.cpp \
+		release\moc_QmlValues.cpp \
+		release\moc_MyDatabase.cpp \
+		release\moc_DatabaseHandler.cpp
 OBJECTS       = release\main.obj \
 		release\ManagerEvent.obj \
 		release\UIBridge.obj \
@@ -75,6 +83,10 @@ OBJECTS       = release\main.obj \
 		release\TimeHandler.obj \
 		release\SerialPortHandler.obj \
 		release\BaseThreads.obj \
+		release\TcpSocketHandler.obj \
+		release\QmlValues.obj \
+		release\MyDatabase.obj \
+		release\DatabaseHandler.obj \
 		release\qrc_qml.obj \
 		release\moc_ManagerEvent.obj \
 		release\moc_UIBridge.obj \
@@ -85,7 +97,11 @@ OBJECTS       = release\main.obj \
 		release\moc_MyTcpSocket.obj \
 		release\moc_TimeHandler.obj \
 		release\moc_SerialPortHandler.obj \
-		release\moc_BaseThreads.obj
+		release\moc_BaseThreads.obj \
+		release\moc_TcpSocketHandler.obj \
+		release\moc_QmlValues.obj \
+		release\moc_MyDatabase.obj \
+		release\moc_DatabaseHandler.obj
 
 DIST          =  ..\SerialPort\ManagerEvent.h \
 		..\SerialPort\UIBridge.h \
@@ -97,7 +113,11 @@ DIST          =  ..\SerialPort\ManagerEvent.h \
 		..\SerialPort\Connection\MyTcpSocket.h \
 		..\SerialPort\Threads\TimeHandler.h \
 		..\SerialPort\Threads\SerialPortHandler.h \
-		..\SerialPort\Threads\BaseThreads.h ..\SerialPort\main.cpp \
+		..\SerialPort\Threads\BaseThreads.h \
+		..\SerialPort\Threads\TcpSocketHandler.h \
+		..\SerialPort\Common\QmlValues.h \
+		..\SerialPort\Connection\MyDatabase.h \
+		..\SerialPort\Threads\DatabaseHandler.h ..\SerialPort\main.cpp \
 		..\SerialPort\ManagerEvent.cpp \
 		..\SerialPort\UIBridge.cpp \
 		..\SerialPort\ManagerData.cpp \
@@ -106,7 +126,11 @@ DIST          =  ..\SerialPort\ManagerEvent.h \
 		..\SerialPort\Connection\MyTcpSocket.cpp \
 		..\SerialPort\Threads\TimeHandler.cpp \
 		..\SerialPort\Threads\SerialPortHandler.cpp \
-		..\SerialPort\Threads\BaseThreads.cpp
+		..\SerialPort\Threads\BaseThreads.cpp \
+		..\SerialPort\Threads\TcpSocketHandler.cpp \
+		..\SerialPort\Common\QmlValues.cpp \
+		..\SerialPort\Connection\MyDatabase.cpp \
+		..\SerialPort\Threads\DatabaseHandler.cpp
 QMAKE_TARGET  = SerialPort
 DESTDIR        = release\ #avoid trailing-slash linebreak
 TARGET         = SerialPort.exe
@@ -115,6 +139,26 @@ DESTDIR_TARGET = release\SerialPort.exe
 ####### Implicit rules
 
 .SUFFIXES: .c .cpp .cc .cxx
+
+{..\SerialPort\Common}.cpp{release\}.obj::
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
+	$<
+<<
+
+{..\SerialPort\Common}.cc{release\}.obj::
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
+	$<
+<<
+
+{..\SerialPort\Common}.cxx{release\}.obj::
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
+	$<
+<<
+
+{..\SerialPort\Common}.c{release\}.obj::
+	$(CC) -c $(CFLAGS) $(INCPATH) -Forelease\ @<<
+	$<
+<<
 
 {..\SerialPort\Threads}.cpp{release\}.obj::
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -Forelease\ @<<
@@ -223,7 +267,7 @@ all: Makefile.Release  $(DESTDIR_TARGET)
 
 $(DESTDIR_TARGET):  $(OBJECTS) 
 	$(LINKER) $(LFLAGS) /MANIFEST:embed /OUT:$(DESTDIR_TARGET) @<<
-release\main.obj release\ManagerEvent.obj release\UIBridge.obj release\ManagerData.obj release\ScreenAdapter.obj release\MySerialPort.obj release\MyTcpSocket.obj release\TimeHandler.obj release\SerialPortHandler.obj release\BaseThreads.obj release\qrc_qml.obj release\moc_ManagerEvent.obj release\moc_UIBridge.obj release\moc_ManagerData.obj release\moc_ScreenAdapter.obj release\moc_Enum.obj release\moc_MySerialPort.obj release\moc_MyTcpSocket.obj release\moc_TimeHandler.obj release\moc_SerialPortHandler.obj release\moc_BaseThreads.obj
+release\main.obj release\ManagerEvent.obj release\UIBridge.obj release\ManagerData.obj release\ScreenAdapter.obj release\MySerialPort.obj release\MyTcpSocket.obj release\TimeHandler.obj release\SerialPortHandler.obj release\BaseThreads.obj release\TcpSocketHandler.obj release\QmlValues.obj release\MyDatabase.obj release\DatabaseHandler.obj release\qrc_qml.obj release\moc_ManagerEvent.obj release\moc_UIBridge.obj release\moc_ManagerData.obj release\moc_ScreenAdapter.obj release\moc_Enum.obj release\moc_MySerialPort.obj release\moc_MyTcpSocket.obj release\moc_TimeHandler.obj release\moc_SerialPortHandler.obj release\moc_BaseThreads.obj release\moc_TcpSocketHandler.obj release\moc_QmlValues.obj release\moc_MyDatabase.obj release\moc_DatabaseHandler.obj
 $(LIBS)
 <<
 
@@ -233,10 +277,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) SerialPort.zip $(SOURCES) $(DIST) ..\SerialPort\SerialPort.pro C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\spec_pre.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\common\angle.conf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\common\windows-vulkan.conf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\common\msvc-desktop.conf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\qconfig.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3danimation.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3drender.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_axbase.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_axserver.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_charts.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_charts_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_core.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_datavisualization.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_datavisualization_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_designer.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_edid_support_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_gui.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_help.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_location.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_location_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_network.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_networkauth.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_networkauth_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_nfc.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_positioning.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_positioningquick.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_positioningquick_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_purchasing.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_purchasing_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_qml.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_quick.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_remoteobjects.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_repparser.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_repparser_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_script.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_script_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_scripttools.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_scripttools_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_scxml.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_sensors.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_serialport.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_sql.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_svg.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_vulkan_support_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_webengine.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_webengine_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_webenginecore.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_webenginecore_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_webenginecoreheaders_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_webenginewidgets.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_webenginewidgets_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_websockets.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_webview.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_webview_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_winextras.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_xml.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\qt_functions.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\qt_config.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\win32-msvc\qmake.conf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\exclusive_builds.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\common\msvc-version.conf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\toolchain.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\default_pre.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\win32\default_pre.prf ..\SerialPort\deployment.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\resolve_config.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\exclusive_builds_post.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\default_post.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\build_pass.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\qml_debug.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\precompile_header.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\warn_on.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\qt.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\resources.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\moc.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\win32\opengl.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\qmake_use.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\file_copies.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\win32\windows.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\testcase_targets.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\exceptions.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\yacc.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\lex.prf ..\SerialPort\SerialPort.pro ..\SerialPort\qml.qrc C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\qtmain.prl C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5Quick.prl C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5Gui.prl C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5Qml.prl C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5Network.prl C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5SerialPort.prl C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5Core.prl   ..\SerialPort\qml.qrc C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\data\dummy.cpp ..\SerialPort\ManagerEvent.h ..\SerialPort\UIBridge.h ..\SerialPort\ManagerData.h ..\SerialPort\ScreenAdapter.h ..\SerialPort\Common\Defines.h ..\SerialPort\Common\Enum.h ..\SerialPort\Connection\MySerialPort.h ..\SerialPort\Connection\MyTcpSocket.h ..\SerialPort\Threads\TimeHandler.h ..\SerialPort\Threads\SerialPortHandler.h ..\SerialPort\Threads\BaseThreads.h  ..\SerialPort\main.cpp ..\SerialPort\ManagerEvent.cpp ..\SerialPort\UIBridge.cpp ..\SerialPort\ManagerData.cpp ..\SerialPort\ScreenAdapter.cpp ..\SerialPort\Connection\MySerialPort.cpp ..\SerialPort\Connection\MyTcpSocket.cpp ..\SerialPort\Threads\TimeHandler.cpp ..\SerialPort\Threads\SerialPortHandler.cpp ..\SerialPort\Threads\BaseThreads.cpp    
+	$(ZIP) SerialPort.zip $(SOURCES) $(DIST) ..\SerialPort\SerialPort.pro C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\spec_pre.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\common\angle.conf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\common\windows-vulkan.conf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\common\msvc-desktop.conf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\qconfig.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3danimation.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3drender.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_axbase.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_axserver.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_charts.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_charts_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_core.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_datavisualization.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_datavisualization_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_designer.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_edid_support_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_gui.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_help.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_location.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_location_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_network.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_networkauth.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_networkauth_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_nfc.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_positioning.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_positioningquick.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_positioningquick_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_purchasing.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_purchasing_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_qml.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_quick.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_remoteobjects.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_repparser.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_repparser_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_script.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_script_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_scripttools.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_scripttools_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_scxml.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_sensors.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_serialport.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_sql.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_svg.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_vulkan_support_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_webengine.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_webengine_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_webenginecore.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_webenginecore_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_webenginecoreheaders_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_webenginewidgets.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_webenginewidgets_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_websockets.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_webview.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_webview_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_winextras.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_xml.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\qt_functions.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\qt_config.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\win32-msvc\qmake.conf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\exclusive_builds.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\common\msvc-version.conf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\toolchain.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\default_pre.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\win32\default_pre.prf ..\SerialPort\deployment.pri C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\resolve_config.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\exclusive_builds_post.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\default_post.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\build_pass.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\qml_debug.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\precompile_header.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\warn_on.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\qt.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\resources.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\moc.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\win32\opengl.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\qmake_use.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\file_copies.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\win32\windows.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\testcase_targets.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\exceptions.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\yacc.prf C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\lex.prf ..\SerialPort\SerialPort.pro ..\SerialPort\qml.qrc C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\qtmain.prl C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5Quick.prl C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5Gui.prl C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5Qml.prl C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5Network.prl C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5SerialPort.prl C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5Sql.prl C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\lib\Qt5Core.prl   ..\SerialPort\qml.qrc C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\data\dummy.cpp ..\SerialPort\ManagerEvent.h ..\SerialPort\UIBridge.h ..\SerialPort\ManagerData.h ..\SerialPort\ScreenAdapter.h ..\SerialPort\Common\Defines.h ..\SerialPort\Common\Enum.h ..\SerialPort\Connection\MySerialPort.h ..\SerialPort\Connection\MyTcpSocket.h ..\SerialPort\Threads\TimeHandler.h ..\SerialPort\Threads\SerialPortHandler.h ..\SerialPort\Threads\BaseThreads.h ..\SerialPort\Threads\TcpSocketHandler.h ..\SerialPort\Common\QmlValues.h ..\SerialPort\Connection\MyDatabase.h ..\SerialPort\Threads\DatabaseHandler.h  ..\SerialPort\main.cpp ..\SerialPort\ManagerEvent.cpp ..\SerialPort\UIBridge.cpp ..\SerialPort\ManagerData.cpp ..\SerialPort\ScreenAdapter.cpp ..\SerialPort\Connection\MySerialPort.cpp ..\SerialPort\Connection\MyTcpSocket.cpp ..\SerialPort\Threads\TimeHandler.cpp ..\SerialPort\Threads\SerialPortHandler.cpp ..\SerialPort\Threads\BaseThreads.cpp ..\SerialPort\Threads\TcpSocketHandler.cpp ..\SerialPort\Common\QmlValues.cpp ..\SerialPort\Connection\MyDatabase.cpp ..\SerialPort\Threads\DatabaseHandler.cpp    
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\main.obj release\ManagerEvent.obj release\UIBridge.obj release\ManagerData.obj release\ScreenAdapter.obj release\MySerialPort.obj release\MyTcpSocket.obj release\TimeHandler.obj release\SerialPortHandler.obj release\BaseThreads.obj release\qrc_qml.obj release\moc_ManagerEvent.obj release\moc_UIBridge.obj release\moc_ManagerData.obj release\moc_ScreenAdapter.obj release\moc_Enum.obj release\moc_MySerialPort.obj release\moc_MyTcpSocket.obj release\moc_TimeHandler.obj release\moc_SerialPortHandler.obj release\moc_BaseThreads.obj
+	-$(DEL_FILE) release\main.obj release\ManagerEvent.obj release\UIBridge.obj release\ManagerData.obj release\ScreenAdapter.obj release\MySerialPort.obj release\MyTcpSocket.obj release\TimeHandler.obj release\SerialPortHandler.obj release\BaseThreads.obj release\TcpSocketHandler.obj release\QmlValues.obj release\MyDatabase.obj release\DatabaseHandler.obj release\qrc_qml.obj release\moc_ManagerEvent.obj release\moc_UIBridge.obj release\moc_ManagerData.obj release\moc_ScreenAdapter.obj release\moc_Enum.obj release\moc_MySerialPort.obj release\moc_MyTcpSocket.obj release\moc_TimeHandler.obj release\moc_SerialPortHandler.obj release\moc_BaseThreads.obj release\moc_TcpSocketHandler.obj release\moc_QmlValues.obj release\moc_MyDatabase.obj release\moc_DatabaseHandler.obj
 	-$(DEL_FILE) release\SerialPort.exp
 
 distclean: clean 
@@ -268,6 +312,7 @@ release\qrc_qml.cpp: ..\SerialPort\qml.qrc \
 		..\SerialPort\Screen\ics_disconnect_popup.qml \
 		..\SerialPort\Screen\ics_data_view.qml \
 		..\SerialPort\Screen\ics_common_popup.qml \
+		..\SerialPort\Screen\ics_view_data_history.qml \
 		..\SerialPort\Images\background.jpg
 	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\rcc.exe -name qml ..\SerialPort\qml.qrc -o release\qrc_qml.cpp
 
@@ -277,9 +322,9 @@ compiler_moc_predefs_clean:
 release\moc_predefs.h: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\data\dummy.cpp
 	cl -BxC:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\qmake.exe -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -O2 -MD -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\mkspecs\features\data\dummy.cpp 2>NUL >release\moc_predefs.h
 
-compiler_moc_header_make_all: release\moc_ManagerEvent.cpp release\moc_UIBridge.cpp release\moc_ManagerData.cpp release\moc_ScreenAdapter.cpp release\moc_Enum.cpp release\moc_MySerialPort.cpp release\moc_MyTcpSocket.cpp release\moc_TimeHandler.cpp release\moc_SerialPortHandler.cpp release\moc_BaseThreads.cpp
+compiler_moc_header_make_all: release\moc_ManagerEvent.cpp release\moc_UIBridge.cpp release\moc_ManagerData.cpp release\moc_ScreenAdapter.cpp release\moc_Enum.cpp release\moc_MySerialPort.cpp release\moc_MyTcpSocket.cpp release\moc_TimeHandler.cpp release\moc_SerialPortHandler.cpp release\moc_BaseThreads.cpp release\moc_TcpSocketHandler.cpp release\moc_QmlValues.cpp release\moc_MyDatabase.cpp release\moc_DatabaseHandler.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) release\moc_ManagerEvent.cpp release\moc_UIBridge.cpp release\moc_ManagerData.cpp release\moc_ScreenAdapter.cpp release\moc_Enum.cpp release\moc_MySerialPort.cpp release\moc_MyTcpSocket.cpp release\moc_TimeHandler.cpp release\moc_SerialPortHandler.cpp release\moc_BaseThreads.cpp
+	-$(DEL_FILE) release\moc_ManagerEvent.cpp release\moc_UIBridge.cpp release\moc_ManagerData.cpp release\moc_ScreenAdapter.cpp release\moc_Enum.cpp release\moc_MySerialPort.cpp release\moc_MyTcpSocket.cpp release\moc_TimeHandler.cpp release\moc_SerialPortHandler.cpp release\moc_BaseThreads.cpp release\moc_TcpSocketHandler.cpp release\moc_QmlValues.cpp release\moc_MyDatabase.cpp release\moc_DatabaseHandler.cpp
 release\moc_ManagerEvent.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobjectdefs.h \
@@ -396,6 +441,12 @@ release\moc_ManagerEvent.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\Q
 		..\SerialPort\UIBridge.h \
 		..\SerialPort\Common\Enum.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QHash \
+		..\SerialPort\ManagerData.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMap \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\QList \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMutex \
+		..\SerialPort\Common\Defines.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QStringList \
 		..\SerialPort\Connection\MySerialPort.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSerialPort\QSerialPort \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSerialPort\qserialport.h \
@@ -404,12 +455,6 @@ release\moc_ManagerEvent.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\Q
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QTimer \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtimer.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbasictimer.h \
-		..\SerialPort\ManagerData.h \
-		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMap \
-		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\QList \
-		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMutex \
-		..\SerialPort\Common\Defines.h \
-		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QStringList \
 		..\SerialPort\Connection\MyTcpSocket.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\QTcpSocket \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qtcpsocket.h \
@@ -422,10 +467,28 @@ release\moc_ManagerEvent.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\Q
 		..\SerialPort\Threads\SerialPortHandler.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QThread \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qthread.h \
+		..\SerialPort\Threads\TcpSocketHandler.h \
+		..\SerialPort\Threads\DatabaseHandler.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QProcess \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qprocess.h \
+		..\SerialPort\Connection\MyDatabase.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlDatabase \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqldatabase.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qtsqlglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlQuery \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlquery.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlRecord \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlrecord.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlResult \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlresult.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlError \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlerror.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QFile \
+		..\SerialPort\Common\QmlValues.h \
 		..\SerialPort\ManagerEvent.h \
 		release\moc_predefs.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/My_Project/Test/build-SerialPort-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/mkspecs/win32-msvc -ID:/My_Project/Test/SerialPort -ID:/My_Project/Test/SerialPort/Common -ID:/My_Project/Test/SerialPort/Connection -ID:/My_Project/Test/SerialPort/Threads -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQuick -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtGui -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQml -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSerialPort -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\SerialPort\ManagerEvent.h -o release\moc_ManagerEvent.cpp
+	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/My_Project/Test/build-SerialPort-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/mkspecs/win32-msvc -ID:/My_Project/Test/SerialPort -ID:/My_Project/Test/SerialPort/Common -ID:/My_Project/Test/SerialPort/Connection -ID:/My_Project/Test/SerialPort/Threads -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQuick -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtGui -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQml -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSerialPort -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSql -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\SerialPort\ManagerEvent.h -o release\moc_ManagerEvent.cpp
 
 release\moc_UIBridge.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject.h \
@@ -480,10 +543,71 @@ release\moc_UIBridge.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObje
 		..\SerialPort\Common\Enum.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QHash \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qhash.h \
+		..\SerialPort\ManagerData.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\QQuickItem \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qquickitem.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qtquickglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qtqmlglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qtqml-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qtnetworkglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtgui-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qtquick-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqml.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlprivate.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmap.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qiodevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvector.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qpoint.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qset.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsharedpointer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qurl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qurlquery.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlparserstatus.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlpropertyvaluesource.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmllist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmetaobject.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlcomponent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlerror.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qjsvalue.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QList \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qevent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qwindowdefs.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qwindowdefs_win.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qregion.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qrect.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmargins.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsize.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qdatastream.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qkeysequence.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qfile.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qvector2d.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtouchdevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qfont.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qaccessible.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qcolor.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qrgb.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qrgba64.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMap \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\QList \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMutex \
+		..\SerialPort\Common\Defines.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QStringList \
 		..\SerialPort\UIBridge.h \
 		release\moc_predefs.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/My_Project/Test/build-SerialPort-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/mkspecs/win32-msvc -ID:/My_Project/Test/SerialPort -ID:/My_Project/Test/SerialPort/Common -ID:/My_Project/Test/SerialPort/Connection -ID:/My_Project/Test/SerialPort/Threads -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQuick -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtGui -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQml -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSerialPort -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\SerialPort\UIBridge.h -o release\moc_UIBridge.cpp
+	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/My_Project/Test/build-SerialPort-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/mkspecs/win32-msvc -ID:/My_Project/Test/SerialPort -ID:/My_Project/Test/SerialPort/Common -ID:/My_Project/Test/SerialPort/Connection -ID:/My_Project/Test/SerialPort/Threads -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQuick -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtGui -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQml -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSerialPort -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSql -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\SerialPort\UIBridge.h -o release\moc_UIBridge.cpp
 
 release\moc_ManagerData.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject.h \
@@ -596,10 +720,12 @@ release\moc_ManagerData.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QO
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\QList \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMutex \
 		..\SerialPort\Common\Enum.h \
+		..\SerialPort\Common\Defines.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QStringList \
 		..\SerialPort\ManagerData.h \
 		release\moc_predefs.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/My_Project/Test/build-SerialPort-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/mkspecs/win32-msvc -ID:/My_Project/Test/SerialPort -ID:/My_Project/Test/SerialPort/Common -ID:/My_Project/Test/SerialPort/Connection -ID:/My_Project/Test/SerialPort/Threads -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQuick -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtGui -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQml -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSerialPort -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\SerialPort\ManagerData.h -o release\moc_ManagerData.cpp
+	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/My_Project/Test/build-SerialPort-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/mkspecs/win32-msvc -ID:/My_Project/Test/SerialPort -ID:/My_Project/Test/SerialPort/Common -ID:/My_Project/Test/SerialPort/Connection -ID:/My_Project/Test/SerialPort/Threads -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQuick -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtGui -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQml -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSerialPort -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSql -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\SerialPort\ManagerData.h -o release\moc_ManagerData.cpp
 
 release\moc_ScreenAdapter.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject.h \
@@ -727,7 +853,7 @@ release\moc_ScreenAdapter.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\
 		..\SerialPort\ScreenAdapter.h \
 		release\moc_predefs.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/My_Project/Test/build-SerialPort-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/mkspecs/win32-msvc -ID:/My_Project/Test/SerialPort -ID:/My_Project/Test/SerialPort/Common -ID:/My_Project/Test/SerialPort/Connection -ID:/My_Project/Test/SerialPort/Threads -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQuick -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtGui -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQml -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSerialPort -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\SerialPort\ScreenAdapter.h -o release\moc_ScreenAdapter.cpp
+	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/My_Project/Test/build-SerialPort-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/mkspecs/win32-msvc -ID:/My_Project/Test/SerialPort -ID:/My_Project/Test/SerialPort/Common -ID:/My_Project/Test/SerialPort/Connection -ID:/My_Project/Test/SerialPort/Threads -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQuick -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtGui -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQml -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSerialPort -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSql -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\SerialPort\ScreenAdapter.h -o release\moc_ScreenAdapter.cpp
 
 release\moc_Enum.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject.h \
@@ -784,7 +910,7 @@ release\moc_Enum.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
 		..\SerialPort\Common\Enum.h \
 		release\moc_predefs.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/My_Project/Test/build-SerialPort-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/mkspecs/win32-msvc -ID:/My_Project/Test/SerialPort -ID:/My_Project/Test/SerialPort/Common -ID:/My_Project/Test/SerialPort/Connection -ID:/My_Project/Test/SerialPort/Threads -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQuick -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtGui -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQml -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSerialPort -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\SerialPort\Common\Enum.h -o release\moc_Enum.cpp
+	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/My_Project/Test/build-SerialPort-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/mkspecs/win32-msvc -ID:/My_Project/Test/SerialPort -ID:/My_Project/Test/SerialPort/Common -ID:/My_Project/Test/SerialPort/Connection -ID:/My_Project/Test/SerialPort/Threads -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQuick -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtGui -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQml -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSerialPort -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSql -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\SerialPort\Common\Enum.h -o release\moc_Enum.cpp
 
 release\moc_MySerialPort.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject.h \
@@ -910,7 +1036,7 @@ release\moc_MySerialPort.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\Q
 		..\SerialPort\Connection\MySerialPort.h \
 		release\moc_predefs.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/My_Project/Test/build-SerialPort-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/mkspecs/win32-msvc -ID:/My_Project/Test/SerialPort -ID:/My_Project/Test/SerialPort/Common -ID:/My_Project/Test/SerialPort/Connection -ID:/My_Project/Test/SerialPort/Threads -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQuick -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtGui -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQml -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSerialPort -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\SerialPort\Connection\MySerialPort.h -o release\moc_MySerialPort.cpp
+	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/My_Project/Test/build-SerialPort-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/mkspecs/win32-msvc -ID:/My_Project/Test/SerialPort -ID:/My_Project/Test/SerialPort/Common -ID:/My_Project/Test/SerialPort/Connection -ID:/My_Project/Test/SerialPort/Threads -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQuick -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtGui -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQml -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSerialPort -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSql -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\SerialPort\Connection\MySerialPort.h -o release\moc_MySerialPort.cpp
 
 release\moc_MyTcpSocket.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject.h \
@@ -983,10 +1109,58 @@ release\moc_MyTcpSocket.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QO
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\QAbstractSocket \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QDebug \
+		..\SerialPort\ManagerData.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\QQuickItem \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qquickitem.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qtquickglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qtqmlglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qtqml-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtgui-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qtquick-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqml.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlprivate.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qurl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qurlquery.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlparserstatus.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlpropertyvaluesource.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmllist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmetaobject.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlcomponent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlerror.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qjsvalue.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QList \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qevent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qwindowdefs.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qwindowdefs_win.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qregion.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qrect.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmargins.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsize.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qdatastream.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qkeysequence.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qfile.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qvector2d.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtouchdevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qfont.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qaccessible.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qcolor.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qrgb.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qrgba64.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMap \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QHash \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\QList \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMutex \
+		..\SerialPort\Common\Enum.h \
+		..\SerialPort\Common\Defines.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QStringList \
 		..\SerialPort\Connection\MyTcpSocket.h \
 		release\moc_predefs.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/My_Project/Test/build-SerialPort-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/mkspecs/win32-msvc -ID:/My_Project/Test/SerialPort -ID:/My_Project/Test/SerialPort/Common -ID:/My_Project/Test/SerialPort/Connection -ID:/My_Project/Test/SerialPort/Threads -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQuick -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtGui -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQml -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSerialPort -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\SerialPort\Connection\MyTcpSocket.h -o release\moc_MyTcpSocket.cpp
+	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/My_Project/Test/build-SerialPort-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/mkspecs/win32-msvc -ID:/My_Project/Test/SerialPort -ID:/My_Project/Test/SerialPort/Common -ID:/My_Project/Test/SerialPort/Connection -ID:/My_Project/Test/SerialPort/Threads -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQuick -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtGui -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQml -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSerialPort -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSql -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\SerialPort\Connection\MyTcpSocket.h -o release\moc_MyTcpSocket.cpp
 
 release\moc_TimeHandler.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject.h \
@@ -1038,10 +1212,84 @@ release\moc_TimeHandler.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QO
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvarlengtharray.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcontainerfwd.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QThread \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qthread.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QTimer \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtimer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbasictimer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QDateTime \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qdatetime.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qhash.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QProcess \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qprocess.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qiodevice.h \
+		..\SerialPort\ManagerData.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\QQuickItem \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qquickitem.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qtquickglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qtqmlglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qtqml-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qtnetworkglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtgui-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qtquick-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqml.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlprivate.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmap.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvector.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qpoint.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qset.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsharedpointer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qurl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qurlquery.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlparserstatus.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlpropertyvaluesource.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmllist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmetaobject.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlcomponent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlerror.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qjsvalue.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QList \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qevent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qwindowdefs.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qwindowdefs_win.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qregion.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qrect.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmargins.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsize.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qdatastream.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qkeysequence.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qfile.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qvector2d.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtouchdevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qfont.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qaccessible.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qcolor.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qrgb.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qrgba64.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMap \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QHash \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\QList \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMutex \
+		..\SerialPort\Common\Enum.h \
+		..\SerialPort\Common\Defines.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QStringList \
+		..\SerialPort\UIBridge.h \
 		..\SerialPort\Threads\TimeHandler.h \
 		release\moc_predefs.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/My_Project/Test/build-SerialPort-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/mkspecs/win32-msvc -ID:/My_Project/Test/SerialPort -ID:/My_Project/Test/SerialPort/Common -ID:/My_Project/Test/SerialPort/Connection -ID:/My_Project/Test/SerialPort/Threads -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQuick -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtGui -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQml -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSerialPort -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\SerialPort\Threads\TimeHandler.h -o release\moc_TimeHandler.cpp
+	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/My_Project/Test/build-SerialPort-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/mkspecs/win32-msvc -ID:/My_Project/Test/SerialPort -ID:/My_Project/Test/SerialPort/Common -ID:/My_Project/Test/SerialPort/Connection -ID:/My_Project/Test/SerialPort/Threads -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQuick -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtGui -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQml -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSerialPort -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSql -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\SerialPort\Threads\TimeHandler.h -o release\moc_TimeHandler.cpp
 
 release\moc_SerialPortHandler.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject.h \
@@ -1171,7 +1419,7 @@ release\moc_SerialPortHandler.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtC
 		..\SerialPort\Threads\SerialPortHandler.h \
 		release\moc_predefs.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/My_Project/Test/build-SerialPort-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/mkspecs/win32-msvc -ID:/My_Project/Test/SerialPort -ID:/My_Project/Test/SerialPort/Common -ID:/My_Project/Test/SerialPort/Connection -ID:/My_Project/Test/SerialPort/Threads -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQuick -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtGui -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQml -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSerialPort -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\SerialPort\Threads\SerialPortHandler.h -o release\moc_SerialPortHandler.cpp
+	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/My_Project/Test/build-SerialPort-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/mkspecs/win32-msvc -ID:/My_Project/Test/SerialPort -ID:/My_Project/Test/SerialPort/Common -ID:/My_Project/Test/SerialPort/Connection -ID:/My_Project/Test/SerialPort/Threads -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQuick -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtGui -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQml -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSerialPort -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSql -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\SerialPort\Threads\SerialPortHandler.h -o release\moc_SerialPortHandler.cpp
 
 release\moc_BaseThreads.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject.h \
@@ -1299,10 +1547,442 @@ release\moc_BaseThreads.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QO
 		..\SerialPort\Common\Defines.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QStringList \
 		..\SerialPort\UIBridge.h \
+		..\SerialPort\Threads\TcpSocketHandler.h \
+		..\SerialPort\Connection\MyTcpSocket.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\QTcpSocket \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qtcpsocket.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qabstractsocket.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\QAbstractSocket \
+		..\SerialPort\Threads\DatabaseHandler.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QProcess \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qprocess.h \
+		..\SerialPort\Connection\MyDatabase.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlDatabase \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqldatabase.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qtsqlglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlQuery \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlquery.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlRecord \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlrecord.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlResult \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlresult.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlError \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlerror.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QFile \
 		..\SerialPort\Threads\BaseThreads.h \
 		release\moc_predefs.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/My_Project/Test/build-SerialPort-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/mkspecs/win32-msvc -ID:/My_Project/Test/SerialPort -ID:/My_Project/Test/SerialPort/Common -ID:/My_Project/Test/SerialPort/Connection -ID:/My_Project/Test/SerialPort/Threads -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQuick -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtGui -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQml -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSerialPort -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\SerialPort\Threads\BaseThreads.h -o release\moc_BaseThreads.cpp
+	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/My_Project/Test/build-SerialPort-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/mkspecs/win32-msvc -ID:/My_Project/Test/SerialPort -ID:/My_Project/Test/SerialPort/Common -ID:/My_Project/Test/SerialPort/Connection -ID:/My_Project/Test/SerialPort/Threads -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQuick -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtGui -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQml -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSerialPort -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSql -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\SerialPort\Threads\BaseThreads.h -o release\moc_BaseThreads.cpp
+
+release\moc_TcpSocketHandler.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qnamespace.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qconfig.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtcore-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsystemdetection.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qprocessordetection.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcompilerdetection.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtypeinfo.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsysinfo.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlogging.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qflags.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbasicatomic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qgenericatomic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic_msvc.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qglobalstatic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmutex.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qnumeric.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qversiontagging.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstring.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qchar.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbytearray.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qrefcount.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qarraydata.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringliteral.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringalgorithms.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringview.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qalgorithms.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qiterator.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qhashfunctions.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qpair.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbytearraylist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringlist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qregexp.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringmatcher.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcoreevent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmetatype.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvarlengtharray.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcontainerfwd.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QThread \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qthread.h \
+		..\SerialPort\ManagerData.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\QQuickItem \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qquickitem.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qtquickglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qtqmlglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qtqml-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qtnetworkglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtgui-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qtquick-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqml.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlprivate.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmap.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qhash.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qiodevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvector.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qpoint.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qset.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsharedpointer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qurl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qurlquery.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlparserstatus.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlpropertyvaluesource.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmllist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmetaobject.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlcomponent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlerror.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qjsvalue.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QList \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qevent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qwindowdefs.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qwindowdefs_win.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qregion.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qrect.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmargins.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsize.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qdatastream.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qkeysequence.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qfile.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qvector2d.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtouchdevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qfont.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qaccessible.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qcolor.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qrgb.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qrgba64.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMap \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QHash \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\QList \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMutex \
+		..\SerialPort\Common\Enum.h \
+		..\SerialPort\Common\Defines.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QStringList \
+		..\SerialPort\Connection\MyTcpSocket.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\QTcpSocket \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qtcpsocket.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qabstractsocket.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\QAbstractSocket \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QDebug \
+		..\SerialPort\UIBridge.h \
+		..\SerialPort\Threads\TcpSocketHandler.h \
+		release\moc_predefs.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe
+	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/My_Project/Test/build-SerialPort-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/mkspecs/win32-msvc -ID:/My_Project/Test/SerialPort -ID:/My_Project/Test/SerialPort/Common -ID:/My_Project/Test/SerialPort/Connection -ID:/My_Project/Test/SerialPort/Threads -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQuick -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtGui -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQml -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSerialPort -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSql -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\SerialPort\Threads\TcpSocketHandler.h -o release\moc_TcpSocketHandler.cpp
+
+release\moc_QmlValues.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qnamespace.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qconfig.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtcore-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsystemdetection.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qprocessordetection.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcompilerdetection.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtypeinfo.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsysinfo.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlogging.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qflags.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbasicatomic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qgenericatomic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic_msvc.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qglobalstatic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmutex.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qnumeric.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qversiontagging.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstring.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qchar.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbytearray.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qrefcount.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qarraydata.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringliteral.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringalgorithms.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringview.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qalgorithms.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qiterator.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qhashfunctions.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qpair.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbytearraylist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringlist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qregexp.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringmatcher.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcoreevent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmetatype.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvarlengtharray.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcontainerfwd.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject_impl.h \
+		..\SerialPort\Common\Defines.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QStringList \
+		..\SerialPort\Common\QmlValues.h \
+		release\moc_predefs.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe
+	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/My_Project/Test/build-SerialPort-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/mkspecs/win32-msvc -ID:/My_Project/Test/SerialPort -ID:/My_Project/Test/SerialPort/Common -ID:/My_Project/Test/SerialPort/Connection -ID:/My_Project/Test/SerialPort/Threads -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQuick -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtGui -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQml -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSerialPort -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSql -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\SerialPort\Common\QmlValues.h -o release\moc_QmlValues.cpp
+
+release\moc_MyDatabase.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qnamespace.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qconfig.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtcore-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsystemdetection.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qprocessordetection.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcompilerdetection.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtypeinfo.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsysinfo.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlogging.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qflags.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbasicatomic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qgenericatomic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic_msvc.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qglobalstatic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmutex.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qnumeric.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qversiontagging.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstring.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qchar.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbytearray.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qrefcount.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qarraydata.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringliteral.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringalgorithms.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringview.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qalgorithms.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qiterator.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qhashfunctions.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qpair.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbytearraylist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringlist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qregexp.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringmatcher.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcoreevent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmetatype.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvarlengtharray.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcontainerfwd.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlDatabase \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqldatabase.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qtsqlglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlQuery \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlquery.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlRecord \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlrecord.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlResult \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlresult.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmap.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qhash.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qiodevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvector.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qpoint.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qset.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsharedpointer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlError \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlerror.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QFile \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qfile.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QDebug \
+		..\SerialPort\Connection\MyDatabase.h \
+		release\moc_predefs.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe
+	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/My_Project/Test/build-SerialPort-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/mkspecs/win32-msvc -ID:/My_Project/Test/SerialPort -ID:/My_Project/Test/SerialPort/Common -ID:/My_Project/Test/SerialPort/Connection -ID:/My_Project/Test/SerialPort/Threads -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQuick -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtGui -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQml -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSerialPort -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSql -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\SerialPort\Connection\MyDatabase.h -o release\moc_MyDatabase.cpp
+
+release\moc_DatabaseHandler.cpp: C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qnamespace.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qconfig.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtcore-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsystemdetection.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qprocessordetection.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcompilerdetection.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtypeinfo.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsysinfo.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlogging.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qflags.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbasicatomic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qgenericatomic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic_msvc.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qglobalstatic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmutex.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qnumeric.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qversiontagging.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstring.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qchar.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbytearray.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qrefcount.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qarraydata.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringliteral.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringalgorithms.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringview.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qalgorithms.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qiterator.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qhashfunctions.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qpair.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbytearraylist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringlist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qregexp.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringmatcher.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcoreevent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmetatype.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvarlengtharray.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcontainerfwd.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QTimer \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtimer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbasictimer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QProcess \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qprocess.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qiodevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qhash.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QThread \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qthread.h \
+		..\SerialPort\Connection\MyDatabase.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlDatabase \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqldatabase.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qtsqlglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlQuery \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlquery.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlRecord \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlrecord.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlResult \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlresult.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmap.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvector.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qpoint.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qset.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsharedpointer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlError \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlerror.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QFile \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qfile.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QDebug \
+		..\SerialPort\Common\Enum.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QHash \
+		..\SerialPort\UIBridge.h \
+		..\SerialPort\ManagerData.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\QQuickItem \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qquickitem.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qtquickglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qtqmlglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qtqml-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qtnetworkglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtgui-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qtquick-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqml.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlprivate.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qurl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qurlquery.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlparserstatus.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlpropertyvaluesource.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmllist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmetaobject.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlcomponent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlerror.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qjsvalue.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QList \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qevent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qwindowdefs.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qwindowdefs_win.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qregion.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qrect.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmargins.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsize.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qdatastream.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qkeysequence.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qvector2d.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtouchdevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qfont.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qaccessible.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qcolor.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qrgb.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qrgba64.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMap \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\QList \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMutex \
+		..\SerialPort\Common\Defines.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QStringList \
+		..\SerialPort\Threads\DatabaseHandler.h \
+		release\moc_predefs.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe
+	C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include D:/My_Project/Test/build-SerialPort-Desktop_Qt_5_11_2_MSVC2017_64bit-Debug/release/moc_predefs.h -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/mkspecs/win32-msvc -ID:/My_Project/Test/SerialPort -ID:/My_Project/Test/SerialPort/Common -ID:/My_Project/Test/SerialPort/Connection -ID:/My_Project/Test/SerialPort/Threads -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQuick -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtGui -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtQml -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSerialPort -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtSql -IC:/Qt/Qt5.11.2/5.11.2/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.10.25017\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.15063.0\winrt" ..\SerialPort\Threads\DatabaseHandler.h -o release\moc_DatabaseHandler.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1465,7 +2145,25 @@ release\main.obj: ..\SerialPort\main.cpp C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\inclu
 		..\SerialPort\Threads\BaseThreads.h \
 		..\SerialPort\Threads\SerialPortHandler.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QThread \
-		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qthread.h
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qthread.h \
+		..\SerialPort\Threads\TcpSocketHandler.h \
+		..\SerialPort\Threads\DatabaseHandler.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QProcess \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qprocess.h \
+		..\SerialPort\Connection\MyDatabase.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlDatabase \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqldatabase.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qtsqlglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlQuery \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlquery.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlRecord \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlrecord.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlResult \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlresult.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlError \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlerror.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QFile \
+		..\SerialPort\Common\QmlValues.h
 
 release\ManagerEvent.obj: ..\SerialPort\ManagerEvent.cpp ..\SerialPort\ManagerEvent.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
@@ -1584,6 +2282,12 @@ release\ManagerEvent.obj: ..\SerialPort\ManagerEvent.cpp ..\SerialPort\ManagerEv
 		..\SerialPort\UIBridge.h \
 		..\SerialPort\Common\Enum.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QHash \
+		..\SerialPort\ManagerData.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMap \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\QList \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMutex \
+		..\SerialPort\Common\Defines.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QStringList \
 		..\SerialPort\Connection\MySerialPort.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSerialPort\QSerialPort \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSerialPort\qserialport.h \
@@ -1592,12 +2296,6 @@ release\ManagerEvent.obj: ..\SerialPort\ManagerEvent.cpp ..\SerialPort\ManagerEv
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QTimer \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtimer.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbasictimer.h \
-		..\SerialPort\ManagerData.h \
-		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMap \
-		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\QList \
-		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMutex \
-		..\SerialPort\Common\Defines.h \
-		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QStringList \
 		..\SerialPort\Connection\MyTcpSocket.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\QTcpSocket \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qtcpsocket.h \
@@ -1609,7 +2307,25 @@ release\ManagerEvent.obj: ..\SerialPort\ManagerEvent.cpp ..\SerialPort\ManagerEv
 		..\SerialPort\Threads\BaseThreads.h \
 		..\SerialPort\Threads\SerialPortHandler.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QThread \
-		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qthread.h
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qthread.h \
+		..\SerialPort\Threads\TcpSocketHandler.h \
+		..\SerialPort\Threads\DatabaseHandler.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QProcess \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qprocess.h \
+		..\SerialPort\Connection\MyDatabase.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlDatabase \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqldatabase.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qtsqlglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlQuery \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlquery.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlRecord \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlrecord.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlResult \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlresult.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlError \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlerror.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QFile \
+		..\SerialPort\Common\QmlValues.h
 
 release\UIBridge.obj: ..\SerialPort\UIBridge.cpp ..\SerialPort\UIBridge.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
@@ -1664,7 +2380,68 @@ release\UIBridge.obj: ..\SerialPort\UIBridge.cpp ..\SerialPort\UIBridge.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject_impl.h \
 		..\SerialPort\Common\Enum.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QHash \
-		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qhash.h
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qhash.h \
+		..\SerialPort\ManagerData.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\QQuickItem \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qquickitem.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qtquickglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qtqmlglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qtqml-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qtnetworkglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtgui-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qtquick-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqml.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlprivate.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmap.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qiodevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvector.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qpoint.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qset.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsharedpointer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qurl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qurlquery.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlparserstatus.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlpropertyvaluesource.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmllist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmetaobject.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlcomponent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlerror.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qjsvalue.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QList \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qevent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qwindowdefs.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qwindowdefs_win.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qregion.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qrect.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmargins.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsize.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qdatastream.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qkeysequence.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qfile.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qvector2d.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtouchdevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qfont.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qaccessible.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qcolor.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qrgb.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qrgba64.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMap \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\QList \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMutex \
+		..\SerialPort\Common\Defines.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QStringList
 
 release\ManagerData.obj: ..\SerialPort\ManagerData.cpp ..\SerialPort\ManagerData.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
@@ -1777,7 +2554,9 @@ release\ManagerData.obj: ..\SerialPort\ManagerData.cpp ..\SerialPort\ManagerData
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QHash \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\QList \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMutex \
-		..\SerialPort\Common\Enum.h
+		..\SerialPort\Common\Enum.h \
+		..\SerialPort\Common\Defines.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QStringList
 
 release\ScreenAdapter.obj: ..\SerialPort\ScreenAdapter.cpp ..\SerialPort\ScreenAdapter.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
@@ -2098,7 +2877,55 @@ release\MyTcpSocket.obj: ..\SerialPort\Connection\MyTcpSocket.cpp ..\SerialPort\
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsharedpointer.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\QAbstractSocket \
-		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QDebug
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QDebug \
+		..\SerialPort\ManagerData.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\QQuickItem \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qquickitem.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qtquickglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qtqmlglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qtqml-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtgui-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qtquick-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqml.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlprivate.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qurl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qurlquery.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlparserstatus.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlpropertyvaluesource.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmllist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmetaobject.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlcomponent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlerror.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qjsvalue.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QList \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qevent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qwindowdefs.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qwindowdefs_win.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qregion.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qrect.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmargins.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsize.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qdatastream.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qkeysequence.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qfile.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qvector2d.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtouchdevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qfont.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qaccessible.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qcolor.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qrgb.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qrgba64.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMap \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QHash \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\QList \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMutex \
+		..\SerialPort\Common\Enum.h \
+		..\SerialPort\Common\Defines.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QStringList
 
 release\TimeHandler.obj: ..\SerialPort\Threads\TimeHandler.cpp ..\SerialPort\Threads\TimeHandler.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
@@ -2150,7 +2977,81 @@ release\TimeHandler.obj: ..\SerialPort\Threads\TimeHandler.cpp ..\SerialPort\Thr
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmetatype.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvarlengtharray.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcontainerfwd.h \
-		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject_impl.h
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QThread \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qthread.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QTimer \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtimer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbasictimer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QDateTime \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qdatetime.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qhash.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QProcess \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qprocess.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qiodevice.h \
+		..\SerialPort\ManagerData.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\QQuickItem \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qquickitem.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qtquickglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qtqmlglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qtqml-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qtnetworkglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtgui-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qtquick-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqml.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlprivate.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmap.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvector.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qpoint.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qset.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsharedpointer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qurl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qurlquery.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlparserstatus.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlpropertyvaluesource.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmllist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmetaobject.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlcomponent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlerror.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qjsvalue.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QList \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qevent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qwindowdefs.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qwindowdefs_win.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qregion.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qrect.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmargins.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsize.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qdatastream.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qkeysequence.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qfile.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qvector2d.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtouchdevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qfont.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qaccessible.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qcolor.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qrgb.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qrgba64.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMap \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QHash \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\QList \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMutex \
+		..\SerialPort\Common\Enum.h \
+		..\SerialPort\Common\Defines.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QStringList \
+		..\SerialPort\UIBridge.h
 
 release\SerialPortHandler.obj: ..\SerialPort\Threads\SerialPortHandler.cpp ..\SerialPort\Threads\SerialPortHandler.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
@@ -2405,7 +3306,427 @@ release\BaseThreads.obj: ..\SerialPort\Threads\BaseThreads.cpp ..\SerialPort\Thr
 		..\SerialPort\Common\Enum.h \
 		..\SerialPort\Common\Defines.h \
 		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QStringList \
+		..\SerialPort\UIBridge.h \
+		..\SerialPort\Threads\TcpSocketHandler.h \
+		..\SerialPort\Connection\MyTcpSocket.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\QTcpSocket \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qtcpsocket.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qabstractsocket.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\QAbstractSocket \
+		..\SerialPort\Threads\DatabaseHandler.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QProcess \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qprocess.h \
+		..\SerialPort\Connection\MyDatabase.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlDatabase \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqldatabase.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qtsqlglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlQuery \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlquery.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlRecord \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlrecord.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlResult \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlresult.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlError \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlerror.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QFile
+
+release\TcpSocketHandler.obj: ..\SerialPort\Threads\TcpSocketHandler.cpp ..\SerialPort\Threads\TcpSocketHandler.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qnamespace.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qconfig.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtcore-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsystemdetection.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qprocessordetection.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcompilerdetection.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtypeinfo.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsysinfo.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlogging.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qflags.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbasicatomic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qgenericatomic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic_msvc.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qglobalstatic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmutex.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qnumeric.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qversiontagging.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstring.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qchar.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbytearray.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qrefcount.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qarraydata.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringliteral.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringalgorithms.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringview.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qalgorithms.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qiterator.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qhashfunctions.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qpair.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbytearraylist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringlist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qregexp.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringmatcher.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcoreevent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmetatype.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvarlengtharray.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcontainerfwd.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QThread \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qthread.h \
+		..\SerialPort\ManagerData.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\QQuickItem \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qquickitem.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qtquickglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qtqmlglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qtqml-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qtnetworkglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtgui-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qtquick-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqml.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlprivate.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmap.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qhash.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qiodevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvector.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qpoint.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qset.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsharedpointer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qurl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qurlquery.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlparserstatus.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlpropertyvaluesource.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmllist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmetaobject.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlcomponent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlerror.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qjsvalue.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QList \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qevent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qwindowdefs.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qwindowdefs_win.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qregion.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qrect.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmargins.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsize.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qdatastream.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qkeysequence.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qfile.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qvector2d.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtouchdevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qfont.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qaccessible.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qcolor.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qrgb.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qrgba64.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMap \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QHash \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\QList \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMutex \
+		..\SerialPort\Common\Enum.h \
+		..\SerialPort\Common\Defines.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QStringList \
+		..\SerialPort\Connection\MyTcpSocket.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\QTcpSocket \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qtcpsocket.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qabstractsocket.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\QAbstractSocket \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QDebug \
 		..\SerialPort\UIBridge.h
+
+release\QmlValues.obj: ..\SerialPort\Common\QmlValues.cpp ..\SerialPort\Common\QmlValues.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qnamespace.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qconfig.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtcore-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsystemdetection.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qprocessordetection.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcompilerdetection.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtypeinfo.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsysinfo.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlogging.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qflags.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbasicatomic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qgenericatomic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic_msvc.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qglobalstatic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmutex.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qnumeric.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qversiontagging.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstring.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qchar.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbytearray.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qrefcount.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qarraydata.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringliteral.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringalgorithms.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringview.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qalgorithms.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qiterator.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qhashfunctions.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qpair.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbytearraylist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringlist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qregexp.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringmatcher.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcoreevent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmetatype.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvarlengtharray.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcontainerfwd.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject_impl.h \
+		..\SerialPort\Common\Defines.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QStringList
+
+release\MyDatabase.obj: ..\SerialPort\Connection\MyDatabase.cpp ..\SerialPort\Connection\MyDatabase.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qnamespace.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qconfig.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtcore-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsystemdetection.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qprocessordetection.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcompilerdetection.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtypeinfo.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsysinfo.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlogging.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qflags.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbasicatomic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qgenericatomic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic_msvc.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qglobalstatic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmutex.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qnumeric.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qversiontagging.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstring.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qchar.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbytearray.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qrefcount.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qarraydata.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringliteral.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringalgorithms.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringview.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qalgorithms.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qiterator.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qhashfunctions.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qpair.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbytearraylist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringlist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qregexp.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringmatcher.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcoreevent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmetatype.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvarlengtharray.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcontainerfwd.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlDatabase \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqldatabase.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qtsqlglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlQuery \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlquery.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlRecord \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlrecord.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlResult \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlresult.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmap.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qhash.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qiodevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvector.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qpoint.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qset.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsharedpointer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlError \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlerror.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QFile \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qfile.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QDebug
+
+release\DatabaseHandler.obj: ..\SerialPort\Threads\DatabaseHandler.cpp ..\SerialPort\Threads\DatabaseHandler.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QObject \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qnamespace.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qconfig.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtcore-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsystemdetection.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qprocessordetection.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcompilerdetection.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtypeinfo.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsysinfo.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlogging.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qflags.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbasicatomic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qgenericatomic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qatomic_msvc.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qglobalstatic.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmutex.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qnumeric.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qversiontagging.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstring.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qchar.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbytearray.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qrefcount.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qarraydata.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringliteral.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringalgorithms.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringview.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qalgorithms.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qiterator.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qhashfunctions.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qpair.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbytearraylist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringlist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qregexp.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qstringmatcher.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcoreevent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmetatype.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvarlengtharray.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcontainerfwd.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QTimer \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtimer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qbasictimer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QProcess \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qprocess.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qiodevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qhash.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QThread \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qthread.h \
+		..\SerialPort\Connection\MyDatabase.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlDatabase \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqldatabase.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qtsqlglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlQuery \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlquery.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlRecord \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlrecord.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlResult \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlresult.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmap.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qvector.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qpoint.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qset.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsharedpointer.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\QSqlError \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtSql\qsqlerror.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QFile \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qfile.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QDebug \
+		..\SerialPort\Common\Enum.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QHash \
+		..\SerialPort\UIBridge.h \
+		..\SerialPort\ManagerData.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\QQuickItem \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qquickitem.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qtquickglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qtqmlglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qtqml-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qtnetworkglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtgui-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQuick\qtquick-config.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqml.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlprivate.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qurl.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qurlquery.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlparserstatus.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlpropertyvaluesource.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmllist.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmetaobject.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlcomponent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qqmlerror.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtQml\qjsvalue.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QList \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qevent.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qwindowdefs.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qwindowdefs_win.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qregion.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qrect.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qmargins.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qsize.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qdatastream.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qkeysequence.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qvector2d.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qtouchdevice.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qfont.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qaccessible.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qcolor.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qrgb.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\qrgba64.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMap \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtGui\QList \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QMutex \
+		..\SerialPort\Common\Defines.h \
+		C:\Qt\Qt5.11.2\5.11.2\msvc2017_64\include\QtCore\QStringList
 
 release\qrc_qml.obj: release\qrc_qml.cpp 
 
@@ -2428,6 +3749,14 @@ release\moc_TimeHandler.obj: release\moc_TimeHandler.cpp
 release\moc_SerialPortHandler.obj: release\moc_SerialPortHandler.cpp 
 
 release\moc_BaseThreads.obj: release\moc_BaseThreads.cpp 
+
+release\moc_TcpSocketHandler.obj: release\moc_TcpSocketHandler.cpp 
+
+release\moc_QmlValues.obj: release\moc_QmlValues.cpp 
+
+release\moc_MyDatabase.obj: release\moc_MyDatabase.cpp 
+
+release\moc_DatabaseHandler.obj: release\moc_DatabaseHandler.cpp 
 
 ####### Install
 

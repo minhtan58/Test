@@ -64,4 +64,24 @@ Item {
         }
     }
 
+    Rectangle {
+        id: dada_view_history
+        x: 400
+        y: 100
+        width: 80
+        height: 80
+        color: "lightBlue"
+        border.color: "black"
+        Text {
+            text: qsTr("Dataview History")
+            anchors.centerIn: parent
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                UIBridge.hmiEvent("", EnumID.HMI_VIEW_DATA_HISTORY_SCREEN, "")
+            }
+        }
+    }
 }

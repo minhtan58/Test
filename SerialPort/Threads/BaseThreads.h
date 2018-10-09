@@ -5,6 +5,7 @@
 
 #include "SerialPortHandler.h"
 #include "TcpSocketHandler.h"
+#include "DatabaseHandler.h"
 
 class BaseThreads : public QObject
 {
@@ -17,6 +18,7 @@ public:
 private:
     SerialPortHandlerThread *m_serialPortHandler = nullptr;
     TcpSocketHandlerThread *m_tcpSocketHandler = nullptr;
+    DatabaseHandlerThread *m_databaseHandler = nullptr;
 
 signals:
 

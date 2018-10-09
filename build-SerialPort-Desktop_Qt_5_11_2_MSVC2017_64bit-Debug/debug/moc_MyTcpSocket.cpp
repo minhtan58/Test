@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MyTcpSocket_t {
     QByteArrayData data[7];
-    char stringdata0[61];
+    char stringdata0[62];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,12 +36,12 @@ QT_MOC_LITERAL(1, 12, 12), // "readComplete"
 QT_MOC_LITERAL(2, 25, 0), // ""
 QT_MOC_LITERAL(3, 26, 12), // "disconnected"
 QT_MOC_LITERAL(4, 39, 8), // "readData"
-QT_MOC_LITERAL(5, 48, 7), // "senData"
-QT_MOC_LITERAL(6, 56, 4) // "data"
+QT_MOC_LITERAL(5, 48, 8), // "sendData"
+QT_MOC_LITERAL(6, 57, 4) // "data"
 
     },
     "MyTcpSocket\0readComplete\0\0disconnected\0"
-    "readData\0senData\0data"
+    "readData\0sendData\0data"
 };
 #undef QT_MOC_LITERAL
 
@@ -86,7 +86,7 @@ void MyTcpSocket::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 0: _t->readComplete(); break;
         case 1: _t->disconnected(); break;
         case 2: _t->readData(); break;
-        case 3: _t->senData((*reinterpret_cast< const QByteArray(*)>(_a[1]))); break;
+        case 3: _t->sendData((*reinterpret_cast< const QByteArray(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {

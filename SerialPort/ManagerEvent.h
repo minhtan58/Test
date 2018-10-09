@@ -20,19 +20,19 @@ class ManagerEvent : public QObject
     Q_OBJECT
 public:
     explicit ManagerEvent(QObject *parent = nullptr);
-    QQuickItem *m_screenContainer = nullptr;
-    void sendEvent(int EnumID, QString params);
-    void initWindow();
-
+    ~ManagerEvent();
+    void exec();
+    UIBridge *m_uiBridge;
+    QmlValues *m_qmlValue = nullptr;
 private:
     QQmlApplicationEngine m_engine;
-    UIBridge *m_uiBridge;
-    QmlValues *m_qmlValue;
+
     MySerialPort *m_mySerialPort = nullptr;
     MyTcpSocket *m_myTcpSocket = nullptr;
     ScreenAdapter *m_screenAdapter = nullptr;
     BaseThreads *m_baseThreads = nullptr;
 
+    void initWindow();
     void showScreen(int screenId);
     void showOverlay(int overlayId, int timeout, int layer = OVERLAY, QString message = "");
     void hideOverlay();

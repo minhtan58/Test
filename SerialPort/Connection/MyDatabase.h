@@ -8,6 +8,7 @@
 #include <QSqlResult>
 #include <QSqlError>
 #include <QFile>
+#include <QDebug>
 
 typedef struct {
     QString time;
@@ -23,14 +24,14 @@ public:
     ~MyDatabase();
     static MyDatabase *getInstance();
 
-    bool createDatabase();
+    void createDatabase();
     bool isDbExists();
-    void initDatabase();
+    //void initDatabase();
     void createHistoryDataTable();
     void createMissingDataTable();
     void addHistoryDataRow(QString time, QString data1, QString data2);
     void removeOldHistoryData(int day);
-    QList<CemsDataRow> getHistoryData(QString time);
+    QList<DataRow> getHistoryData(QString time);
 
 signals:
 

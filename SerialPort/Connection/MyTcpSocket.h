@@ -17,10 +17,6 @@ public:
     void doConnect(QString ipAdress,int port);
     QString getData() const;
 
-private:
-    QTcpSocket *m_socket = nullptr;
-    QString m_dataChange;
-
 signals:
     void readComplete();
 
@@ -28,6 +24,10 @@ public slots:
     void disconnected();
     void readData();
     void sendData(const QByteArray &data);
+
+private:
+    QTcpSocket *m_socket = nullptr;
+    QString m_dataChange;
 };
 
 #endif // MYTCPSOCKET_H

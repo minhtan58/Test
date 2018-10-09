@@ -12,7 +12,6 @@
 class MySerialPort : public QObject
 {
     Q_OBJECT
-
 public:
     explicit MySerialPort(QObject *parent = nullptr);
     QString getData() const;
@@ -30,7 +29,6 @@ public slots:
 private:
     QString m_dataChange;
     QSerialPort *m_serial = nullptr;
-    QTimer *m_updateStatus = nullptr;
 };
 
 #endif // MYSERIALPORT_H

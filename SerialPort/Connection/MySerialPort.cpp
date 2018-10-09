@@ -7,14 +7,6 @@ MySerialPort::MySerialPort(QObject *parent) : QObject(parent)
     connect(m_serial, SIGNAL(error(QSerialPort::SerialPortError)), this, SLOT(handleError(QSerialPort::SerialPortError)));
 }
 
-void MySerialPort::readData() {
-   m_serial->waitForReadyRead(200);
-   QByteArray data = m_serial->readAll();
-   m_dataChange = QString::fromUtf8(data);
-   emit readComplete();
-   qDebug() << "rev: " << data;
-}
-
 void MySerialPort::openSerialPort(QString portCom) {
     if(m_serial->isOpen()) {
         closeSerialPort();
@@ -39,6 +31,14 @@ void MySerialPort::closeSerialPort() {
     if (m_serial->isOpen())
         m_serial->close();
     SETDPDATA(EnumID::DP_SERIALPORT_STATUS, "Connect");
+}
+
+void MySerialPort::readData() {
+   m_serial->waitForReadyRead(200);
+   QByteArray data = m_serial->readAll();
+   m_dataChange = QString::fromUtf8(data);
+   emit readComplete();
+   qDebug() << "rev: " << data;
 }
 
 void MySerialPort::writeData(const QByteArray &data) {

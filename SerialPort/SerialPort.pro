@@ -50,4 +50,4 @@ HEADERS += \
     Threads/TcpSocketHandler.h \
     Common/QmlValues.h \
     Connection/MyDatabase.h \
-    Threads/DatabaseHandlerr.h
+    Threads/DatabaseHandler.h

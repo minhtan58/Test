@@ -13,7 +13,7 @@ class QmlValues : public QObject
     Q_PROPERTY(int backgroundZ      READ backgroundZ    CONSTANT)
 
 public:
-    explicit QmlValues(QObject *parent = 0);
+    explicit QmlValues(QObject *parent = nullptr);
 
     int screenWidth() const;
     int screenHeight() const;

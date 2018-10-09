@@ -34,6 +34,7 @@ public:
         HMI_CONNECTION_PORTCOM_SCREEN,
         HMI_CONNECTION_NETWORK_SCREEN,
         HMI_DATA_VIEW_SCREEN,
+        HMI_VIEW_DATA_HISTORY_SCREEN,
 
         /* Show popup */
         HMI_COMMON_POPUP,
@@ -49,7 +50,11 @@ public:
 
         /* Setting Time */
         HMI_UPDATE_TIME_AUTOMATIC,
-        HMI_SET_DATE_TIME
+        HMI_SET_DATE_TIME,
+
+        /* Database */
+        HMI_UPDATE_DATABASE,
+        HMI_REMOVE_DATABASE,
 
     }HMIEvent;
 };
@@ -64,7 +69,8 @@ enum  ScreenID{
 
     ICS_COMMON_POPUP = 0xA000,
     ICS_CONNECT_POPUP,
-    ICS_DISCONNECT_POPUP
+    ICS_DISCONNECT_POPUP,
+    ICS_VIEW_DATA_HISTORY
 };
 
 const QHash<int, QString> mapScreen = {
@@ -75,6 +81,7 @@ const QHash<int, QString> mapScreen = {
     {ICS_DATA_VIEW,                        "qrc:/Screen/ics_data_view.qml"                       },
     {ICS_CONNECT_POPUP,                    "qrc:/Screen/ics_connect_popup.qml"                   },
     {ICS_DISCONNECT_POPUP,                 "qrc:/Screen/ics_disconnect_popup.qml"                },
+    {ICS_VIEW_DATA_HISTORY,                "qrc:/Screen/ics_view_data_history.qml"               },
 };
 
 //***********************************************************************************************//

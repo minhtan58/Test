@@ -4,8 +4,17 @@ ManagerEvent::ManagerEvent(QObject *parent) : QObject(parent){
     qmlRegisterType<EnumID>("EnumID", 1, 0, "EnumID");
 }
 
-void ManagerEvent::initWindow(){
+ManagerEvent::~ManagerEvent()
+{}
+
+void ManagerEvent::exec() {
     ManagerData::getInstance();
+    initWindow();
+    m_baseThreads->start();
+    showScreen(ICS_HOME);
+}
+
+void ManagerEvent::initWindow(){
     m_baseThreads = new BaseThreads(this);
     m_qmlValue = new QmlValues(this);
 
@@ -16,9 +25,6 @@ void ManagerEvent::initWindow(){
     connect(UIBridge::getInstance(), SIGNAL(hmiEvent(QString, int, QString)), this, SLOT(hmiHandle(QString, int,QString)));
 
     m_screenAdapter = new ScreenAdapter(m_engine.rootObjects().at(0)->findChild<QQuickItem*>("screenContainer"), this);
-    m_baseThreads->start();
-    showScreen(ICS_HOME);
-
 }
 
 void ManagerEvent::showScreen(int screenId){
@@ -80,6 +86,11 @@ void ManagerEvent::hmiHandle(QString objectName, int EnumID, QString param){
     case EnumID::HMI_DATA_VIEW_SCREEN:
     {
         showScreen(ICS_DATA_VIEW);
+        break;
+    }
+    case EnumID::HMI_VIEW_DATA_HISTORY_SCREEN:
+    {
+        showScreen(ICS_VIEW_DATA_HISTORY);
         break;
     }
     case EnumID::HMI_HIDE_POPUP:

@@ -41,6 +41,6 @@ void MyTcpSocket::sendData(const QByteArray &data) {
 void MyTcpSocket::readData() {
     QByteArray data = m_socket->readAll();
     m_dataChange = QString::fromUtf8(data);
-    //qDebug() << "Data :" << data;
+    qDebug() << "Data :" << data;
     emit readComplete();
 }

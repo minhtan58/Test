@@ -8,6 +8,7 @@
 #include "Defines.h"
 #include "MyTcpSocket.h"
 #include "UIBridge.h"
+#include "Enum.h"
 
 class TcpSocketHandler : public QObject
 {
