@@ -1,0 +1,57 @@
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
+
+#include <QObject>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlRecord>
+#include <QSqlResult>
+#include <QSqlError>
+#include <QFile>
+#include <QDebug>
+
+int main(int argc, char *argv[])
+{
+    QGuiApplication app(argc, argv);
+
+    if(!QSqlDatabase::isDriverAvailable("QSQLITE")) {
+        qDebug() << "Can't load Database - Need create data base";
+        return -1;
+    }
+
+    QSqlDatabase database = QSqlDatabase::addDatabase("QSQLITE");
+
+    database.setDatabaseName("D://My_project/Test/minhtan2.db");
+
+    if(database.open()) {
+        qDebug() << "Have Created Database";
+    } else {
+        qDebug() << "Error open Database" << database.lastError().text();
+        return -2;
+    }
+
+    const QString createSQL = "CREATE TABLE IF NOT EXISTS historyData "
+                              "(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
+                              "data1 VARCHAR(255) NOT NULL,"
+                              "data2 INTERGER NOT NULL)";
+    QSqlQuery m_query;
+
+    if(m_query.exec(createSQL)) {
+        qDebug() << "Tabale have crete successfully";
+    } else {
+        qDebug() << "Error open Database" << database.lastError().text();
+        return -3;
+    }
+    m_query.exec("INSERT INTO historyData(data1,data2)VALUES('Vuong', 1994)");
+    m_query.exec("INSERT INTO historyData(data1,data2)VALUES('Tan',1995)");
+    m_query.exec("INSERT INTO historyData(data1,data2)VALUES('Tu',1996)");
+    m_query.exec("SELECT * FROM historyData");
+    qDebug() << m_query.next();
+    while(m_query.next()) {
+        qDebug() << m_query.value("id").toInt();
+        qDebug() << m_query.value("data1").toString();
+        qDebug() << m_query.value("data2").toInt();
+        qDebug() << "....................";
+    }
+    return app.exec();
+}
