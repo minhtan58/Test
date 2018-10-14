@@ -7,6 +7,19 @@ inline QStringList getListParam(QString params)
 {
     return params.split(",");
 }
+
+#define DECLARE_VAR(TYPE, NAME) \
+    private: \
+        TYPE m_##NAME;\
+    public: TYPE NAME() const \
+    { \
+        return m_##NAME; \
+    } \
+    void set##NAME(const TYPE &value) \
+    { \
+        m_##NAME = value; \
+    }
+
 /********************Define value QML***********************/
 
 #define SCREEN_WIDTH    800
