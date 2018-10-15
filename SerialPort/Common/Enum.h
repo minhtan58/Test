@@ -20,11 +20,18 @@ public:
         DP_MONTH,
         DP_YEAR,
 
+        DP_DATE_DAY,
+        DP_DATE_MONTH,
+        DP_DATE_YEAR,
+
         DP_PORTCOM,
         DP_SERIALPORT_STATUS,
 
         DP_NETWORK,
         DP_NETWORK_STATUS,
+
+        DP_SYS_DATE_DAY,
+        DP_SEARCH_TIME_HISTORY_DATA,
 
    }DatapoolID;
 
@@ -55,6 +62,7 @@ public:
         /* Database */
         HMI_UPDATE_DATABASE,
         HMI_REMOVE_DATABASE,
+        HMI_REQUEST_GET_HISTORY_DATA
 
     }HMIEvent;
 };
@@ -70,7 +78,7 @@ enum  ScreenID{
     ICS_COMMON_POPUP = 0xA000,
     ICS_CONNECT_POPUP,
     ICS_DISCONNECT_POPUP,
-    ICS_VIEW_DATA_HISTORY
+    ICS_HISTORY_DATAVIEW
 };
 
 const QHash<int, QString> mapScreen = {
@@ -81,7 +89,7 @@ const QHash<int, QString> mapScreen = {
     {ICS_DATA_VIEW,                        "qrc:/Screen/ics_data_view.qml"                       },
     {ICS_CONNECT_POPUP,                    "qrc:/Screen/ics_connect_popup.qml"                   },
     {ICS_DISCONNECT_POPUP,                 "qrc:/Screen/ics_disconnect_popup.qml"                },
-    {ICS_VIEW_DATA_HISTORY,                "qrc:/Screen/ics_view_data_history.qml"               },
+    {ICS_HISTORY_DATAVIEW,                "qrc:/Screen/ics_view_data_history.qml"               },
 };
 
 //***********************************************************************************************//
@@ -100,5 +108,18 @@ enum TestConnection {
     IS_CONNECTED,
     IS_DISCONNECTED,
 };
+
+enum FetchDataStatus {
+    FETCH_IDLE,
+    FETCH_STARTING,
+    FETCH_FINISHED
+};
+
+typedef struct {
+    QString id;
+    QString data1;
+    QString data2;
+    QString data3;
+} CemsDataRow;
 
 #endif // ENUM_H

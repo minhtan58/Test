@@ -5,8 +5,6 @@
 #include <QThread>
 
 #include "MySerialPort.h"
-#include "Enum.h"
-#include "Defines.h"
 #include "ManagerData.h"
 #include "UIBridge.h"
 
@@ -36,7 +34,7 @@ public:
 
 protected:
     void run() {
-        qDebug() << "Start";
+        qDebug() << "Start thread SerialPort";
         SerialPortHandler handler;
         connect(UIBridge::getInstance(), SIGNAL(hmiEvent(QString,int,QString)), &handler, SLOT(eventHandler(QString,int,QString)));
         exec();

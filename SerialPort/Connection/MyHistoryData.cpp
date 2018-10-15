@@ -1,4 +1,4 @@
-#include "HistoryData.h"
+#include "MyHistoryData.h"
 
 /*****************************************Model*******************************************/
 HistoryDataModel::HistoryDataModel(QObject *parent)

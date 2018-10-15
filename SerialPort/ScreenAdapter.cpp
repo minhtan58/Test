@@ -49,6 +49,10 @@ void ScreenAdapter::initAppData() {
         SETPROPERTY("viewO2", "textValue", GETDPDATA(EnumID::DP_DATE));
         break;
     }
+    case ICS_HISTORY_DATAVIEW: {
+        SETPROPERTY("dateSelected", "datetime", GETDPDATA(EnumID::DP_SEARCH_TIME_HISTORY_DATA));
+        break;
+    }
     default:
         break;
     }
@@ -84,6 +88,18 @@ void ScreenAdapter::updateAppdata(int dpid) {
         if(m_screenId == ICS_CONNECTION_NETWORK ) {
             SETPROPERTY("connection_status", "text", data);
         }
+        break;
+    }
+    case EnumID::DP_SEARCH_TIME_HISTORY_DATA: {
+        SETPROPERTY("dateSelected", "datetime", GETDPDATA(EnumID::DP_SEARCH_TIME_HISTORY_DATA));
+        break;
+    }
+    case EnumID::DP_SYS_DATE_DAY: {
+        SETDPDATA(EnumID::DP_SEARCH_TIME_HISTORY_DATA,
+                  QString("%1-%2-%3")
+                  .arg(GETDPDATA(EnumID::DP_DATE_YEAR))
+                  .arg(GETDPDATA(EnumID::DP_DATE_MONTH))
+                  .arg(GETDPDATA(EnumID::DP_SYS_DATE_DAY)));
         break;
     }
     default:

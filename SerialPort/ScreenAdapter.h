@@ -10,7 +10,7 @@
 #include "Enum.h"
 #include "Defines.h"
 #include "ManagerData.h"
-
+#include "MyHistoryData.h"
 class ScreenAdapter : public QObject
 {
     Q_OBJECT
@@ -28,7 +28,7 @@ private:
     QQmlApplicationEngine *m_qmAppEngine = nullptr;
     QObject* m_screenContainer = nullptr;
     QObject* m_screenView = nullptr;
-
+    HistoryDataModel *m_listHistory = nullptr;
 signals:
 
 public slots:

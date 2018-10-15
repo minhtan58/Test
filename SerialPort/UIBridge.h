@@ -3,7 +3,6 @@
 
 #include <QObject>
 
-#include "Enum.h"
 #include "ManagerData.h"
 
 class UIBridge : public QObject

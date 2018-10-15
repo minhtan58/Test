@@ -26,7 +26,8 @@ SOURCES += main.cpp \
     Common/QmlValues.cpp \
     Connection/MyDatabase.cpp \
     Threads/DatabaseHandler.cpp \
-    HistoryData.cpp
+    Threads/HistoryDataHandler.cpp \
+    Connection/MyHistoryData.cpp
 
 RESOURCES += qml.qrc
 
@@ -52,4 +53,6 @@ HEADERS += \
     Common/QmlValues.h \
     Connection/MyDatabase.h \
     Threads/DatabaseHandler.h \
-    HistoryData.h
+    HistoryData.h \
+    Threads/HistoryDatahandler.h \
+    Connection/MyHistoryData.h
