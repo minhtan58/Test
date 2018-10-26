@@ -51,6 +51,20 @@ QString ManagerData::getDataName(int dpId)
     return "";
 }
 
+/********************HistoryData**************************/
+
+void ManagerData::setHistoryDataList(const QList<CemsDataRow> &historyDataList)
+{
+    m_historyDataList = historyDataList;
+}
+
+QList<CemsDataRow> ManagerData::getHistoryDataList() const
+{
+    return m_historyDataList;
+}
+
+/********************HistoryData**************************/
+
 void ManagerData::initData()
 {
     INITDATA(EnumID::DP_TIME);

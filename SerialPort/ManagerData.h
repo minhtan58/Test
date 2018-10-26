@@ -22,12 +22,16 @@ public:
     void setData(int dpid, QString value);
     QString getDataName(int dpId);
 
+    void setHistoryDataList(const QList<CemsDataRow> &historyDataList);
+    QList<CemsDataRow> getHistoryDataList() const;
+
 private:
     static ManagerData *m_managerData;
     QHash<int, QString> m_datapool;
     QHash<int, QString> m_dpName;
     QMutex mutex;
 
+    QList<CemsDataRow> m_historyDataList;
     void initData();
 
 signals:

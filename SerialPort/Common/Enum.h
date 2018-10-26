@@ -32,6 +32,7 @@ public:
 
         DP_SYS_DATE_DAY,
         DP_SEARCH_TIME_HISTORY_DATA,
+        DB_RESPONSE_GET_HISTORY_DATA_FINISHED,
 
    }DatapoolID;
 
@@ -117,6 +118,7 @@ enum FetchDataStatus {
 
 typedef struct {
     QString id;
+    QString time;
     QString data1;
     QString data2;
     QString data3;

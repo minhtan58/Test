@@ -2,6 +2,8 @@
 #define HISTORYDATA_H
 
 #include <QObject>
+#include <QThread>
+
 #include "ManagerData.h"
 #include "UIBridge.h"
 #include "MyHistoryData.h"
@@ -11,9 +13,9 @@ class HistoryDataHandler : public QObject
     Q_OBJECT
 public:
     explicit HistoryDataHandler(QObject *parent = 0);
+
 signals:
-private:
-    HistoryDataModel *m_listHistory = nullptr;
+
 public slots:
     void eventHandler(QString objectName, int eventId, QString param);
 };

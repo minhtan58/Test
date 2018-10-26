@@ -18,7 +18,7 @@ public:
 private:
     SerialPortHandlerThread *m_serialPortHandler = nullptr;
     TcpSocketHandlerThread *m_tcpSocketHandler = nullptr;
-    DatabaseHandlerThread *m_databaseHandler = nullptr;
+    //DatabaseHandlerThread *m_databaseHandler = nullptr;
 
 signals:
 

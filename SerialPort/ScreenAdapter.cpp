@@ -106,3 +106,28 @@ void ScreenAdapter::updateAppdata(int dpid) {
         break;
     }
 }
+
+// History data*********************************************************************
+void ScreenAdapter::eventHandler(QString objectName, int eventId, QString param)
+{
+    Q_UNUSED(objectName)
+    switch (eventId) {
+    case EnumID::HMI_REQUEST_GET_HISTORY_DATA: {
+        SETDPDATA(EnumID::DP_SEARCH_TIME_HISTORY_DATA, param);
+        if(m_listHistory) {
+            m_listHistory->~HistoryDataModel();
+            m_qmlAppEngine->rootContext()->setContextProperty("listHistory", nullptr);
+        }
+        break;
+    }
+    case EnumID::DB_RESPONSE_GET_HISTORY_DATA_FINISHED: {
+        m_listHistory = new HistoryDataModel(this);
+        m_listHistory->fetchData();
+        m_qmlAppEngine->rootContext()->setContextProperty("listHistory", m_listHistory);
+        emit m_listHistory->slotUpdateFetchDataStatus(FETCH_FINISHED);
+        break;
+    }
+    default:
+        break;
+    }
+}

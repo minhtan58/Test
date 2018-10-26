@@ -90,7 +90,7 @@ void ManagerEvent::hmiHandle(QString objectName, int EnumID, QString param){
     }
     case EnumID::HMI_VIEW_DATA_HISTORY_SCREEN:
     {
-        showScreen(ICS_VIEW_DATA_HISTORY);
+        showScreen(ICS_HISTORY_DATAVIEW);
         break;
     }
     case EnumID::HMI_HIDE_POPUP:
