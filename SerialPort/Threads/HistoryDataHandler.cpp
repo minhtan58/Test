@@ -1,6 +1,6 @@
-#include "HistoryDatahandler.h"
+//#include "HistoryDatahandler.h"
 
-HistoryDataHandler::HistoryDataHandler(QObject *parent) : QObject(parent)
-{
+//HistoryDataHandler::HistoryDataHandler(QObject *parent) : QObject(parent)
+//{
 
-}
+//}

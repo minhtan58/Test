@@ -30,7 +30,7 @@ Item {
         height: 35
         width: 150
         text: "View"
-        eventID: CEMSEnum.HMI_LIST_REQUEST_GET_HISTORY_DATA
+        eventID: EnumID.HMI_REQUEST_GET_HISTORY_DATA
         eventParams: dateSelected.datetime
     }
 
@@ -39,7 +39,7 @@ Item {
         y: 15
         height: 35
         width: 150
-        eventID: CEMSEnum.HMI_REQUEST_SHOW_EXPORT_POPUP
+        eventID: EnumID.HMI_REQUEST_SHOW_EXPORT_POPUP
         text: "Export"
     }
 
@@ -193,8 +193,8 @@ Item {
     Component.onCompleted: {
         lvLoader.sourceComponent = historyDataListview
         UIBridge.hmiEvent(this.objectName,
-                          CEMSEnum.HMI_LIST_REQUEST_GET_HISTORY_DATA,
-                          UIBridge.getDPData(CEMSEnum.DP_SEARCH_TIME_HISTORY_DATA))
+                          EnumID.HMI_REQUEST_GET_HISTORY_DATA,
+                          UIBridge.getDPData(EnumID.DP_SEARCH_TIME_HISTORY_DATA))
     }
 }
 

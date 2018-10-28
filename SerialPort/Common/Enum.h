@@ -49,6 +49,7 @@ public:
         HMI_HIDE_POPUP,
         HMI_CONNECTED_POPUP,
         HMI_DISCONNECTED_POPUP,
+        HMI_REQUEST_SHOW_EXPORT_POPUP,
 
         /* Connection */
         HMI_TEST_CONNECTIONS_SERIALPORT,

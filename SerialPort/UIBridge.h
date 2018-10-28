@@ -14,10 +14,15 @@ public:
     ~UIBridge();
 
     void sendEvent(QString objectName, int EnumID, QString param);
+    Q_INVOKABLE QString getDPData(int dpid);
+    Q_INVOKABLE void setDPData(int dpid, QVariant value);
+
 private:
     static UIBridge *m_uiBridge;
+
 signals:
     void hmiEvent(QString objectName, int EnumID, QString param);
+
 public slots:
 };
 
