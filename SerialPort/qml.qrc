@@ -15,5 +15,8 @@
         <file>Widget/QButton.qml</file>
         <file>Widget/QListView.qml</file>
         <file>Widget/DataHistoryDelegate.qml</file>
+        <file>Images/calendar.png</file>
+        <file>Images/backspace_normal.png</file>
+        <file>Images/backspace_press.png</file>
     </qresource>
 </RCC>

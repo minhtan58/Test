@@ -42,7 +42,7 @@ Item {
             anchors.fill: parent
             fillMode: Image.Stretch
             asynchronous: true
-            source: "qrc:/Images/1.png"
+            source: "qrc:/Images/calendar.png"
         }
         MouseArea {
             id: pick

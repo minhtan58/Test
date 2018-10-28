@@ -43,6 +43,20 @@ Item {
         text: "Export"
     }
 
+    Image {
+        x: 20
+        y: 400
+        width: 120
+        height: 68
+        source: mouseHome.containsMouse ? "qrc:/Images/backspace_normal.png" : "qrc:/Images/backspace_press.png"
+
+        MouseArea {
+            id: mouseHome
+            anchors.fill: parent
+            onClicked: UIBridge.hmiEvent("", EnumID.HMI_HOME_SCREEN, "")
+        }
+    }
+
     Loader {
         id: lvLoader
         asynchronous: true
