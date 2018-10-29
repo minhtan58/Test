@@ -10,6 +10,7 @@
 
 #include "Enum.h"
 #include "Defines.h"
+#include "UIBridge.h"
 
 class ManagerData : public QObject
 {

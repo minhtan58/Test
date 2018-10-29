@@ -14,7 +14,7 @@ void ManagerEvent::exec() {
     showScreen(ICS_HOME);
 }
 
-void ManagerEvent::initWindow(){
+void ManagerEvent::initWindow() {
     m_baseThreads = new BaseThreads(this);
     m_qmlValue = new QmlValues(this);
 
@@ -24,10 +24,10 @@ void ManagerEvent::initWindow(){
 
     connect(UIBridge::getInstance(), SIGNAL(hmiEvent(QString, int, QString)), this, SLOT(hmiHandle(QString, int,QString)));
 
-    m_screenAdapter = new ScreenAdapter(m_engine.rootObjects().at(0)->findChild<QQuickItem*>("screenContainer"), this);
+    m_screenAdapter = new ScreenAdapter(&m_engine, this);
 }
 
-void ManagerEvent::showScreen(int screenId){
+void ManagerEvent::showScreen(int screenId) {
     qDebug() << "Display screen -" << screenId;
     if(m_screenAdapter && m_screenAdapter->getCurrentScreen() == screenId)
         return;
@@ -37,7 +37,7 @@ void ManagerEvent::showScreen(int screenId){
     connect(ManagerData::getInstance(), SIGNAL(dataChanged(int)), m_screenAdapter, SLOT(updateAppdata(int)), Qt::UniqueConnection);
 }
 
-void ManagerEvent::showOverlay(int overlayId, int timeout, int layer, QString message){
+void ManagerEvent::showOverlay(int overlayId, int timeout, int layer, QString message) {
     Q_UNUSED(message)
     qDebug() << "Display overlay - " << overlayId;
     QQuickItem *overlayScreen = m_engine.rootObjects().at(0)->findChild<QQuickItem*>("overlayContainer");
@@ -56,7 +56,7 @@ void ManagerEvent::showOverlay(int overlayId, int timeout, int layer, QString me
         overlay->setProperty("message", QVariant::fromValue(message));
 }
 
-void ManagerEvent::hideOverlay(){
+void ManagerEvent::hideOverlay() {
     QQuickItem *overlayScreen = m_engine.rootObjects().at(0)->findChild<QQuickItem*>("overlayContainer");
     if(!overlayScreen) {
         qDebug() << "OverlayScreen null";
@@ -66,7 +66,9 @@ void ManagerEvent::hideOverlay(){
     overlayScreen->setProperty("source", "");
 }
 
-void ManagerEvent::hmiHandle(QString objectName, int EnumID, QString param){
+void ManagerEvent::hmiHandle(QString objectName, int EnumID, QString param) {
+    Q_UNUSED(objectName)
+    Q_UNUSED(param)
     switch (EnumID) {
     case EnumID::HMI_HOME_SCREEN:
     {
@@ -100,12 +102,12 @@ void ManagerEvent::hmiHandle(QString objectName, int EnumID, QString param){
     }
     case EnumID::HMI_CONNECTED_POPUP:
     {
-        showOverlay(ICS_CONNECT_POPUP, 3000);
+        showOverlay(ICP_CONNECT_POPUP, 3000);
         break;
     }
     case EnumID::HMI_DISCONNECTED_POPUP:
     {
-        showOverlay(ICS_DISCONNECT_POPUP, 3000);
+        showOverlay(ICP_DISCONNECT_POPUP, 3000);
         break;
     }
     default:

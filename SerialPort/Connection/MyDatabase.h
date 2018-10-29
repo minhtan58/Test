@@ -10,6 +10,7 @@
 #include <QFile>
 #include <QDebug>
 
+#include "ManagerData.h"
 typedef struct {
     QString time;
     QString data1;
@@ -31,7 +32,7 @@ public:
     void createMissingDataTable();
     void addHistoryDataRow(QString time, QString data1, QString data2);
     void removeOldHistoryData(int day);
-    QList<DataRow> getHistoryData(QString time);
+    QList<CemsDataRow> getHistoryData(QString time);
 
 signals:
 

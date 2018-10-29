@@ -44,6 +44,7 @@ void HistoryDataModel::slotUpdateFetchDataStatus(int status)
         break;
     }
 }
+
 int HistoryDataModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)

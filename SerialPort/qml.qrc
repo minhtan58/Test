@@ -1,14 +1,10 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>Screen/home.qml</file>
         <file>Screen/ics_connection_network.qml</file>
         <file>Screen/ics_connection_portcom.qml</file>
-        <file>Screen/ics_connect_popup.qml</file>
-        <file>Screen/ics_disconnect_popup.qml</file>
         <file>Screen/ics_data_view.qml</file>
         <file>Images/background.jpg</file>
-        <file>Screen/ics_common_popup.qml</file>
         <file>Screen/ics_view_data_history.qml</file>
         <file>Widget/QText.qml</file>
         <file>Widget/QDatePicker.qml</file>
@@ -18,5 +14,10 @@
         <file>Images/calendar.png</file>
         <file>Images/backspace_normal.png</file>
         <file>Images/backspace_press.png</file>
+        <file>Screen/icp_common_popup.qml</file>
+        <file>Screen/icp_connect_popup.qml</file>
+        <file>Screen/icp_disconnect_popup.qml</file>
+        <file>Screen/ics_home.qml</file>
+        <file>Screen/ics_login_form.qml</file>
     </qresource>
 </RCC>

@@ -92,3 +92,58 @@ void MyDatabase::createHistoryDataTable() {
     }
     qDebug() << "Minhtan database";
 }
+
+QList<CemsDataRow> MyDatabase::getHistoryData(QString time)
+{
+    QSqlDatabase database = QSqlDatabase::database();
+    if (!database.tables().contains("HistoryData")) {
+        qDebug() << "Select record error: HistoryData table does not exist.";
+    } else {
+        QSqlQuery query(database);
+        QString command = QString("SELECT * FROM HistoryData "
+                                  "WHERE time "
+                                  "BETWEEN '%1 00:00:00' "
+                                  "AND '%2 23:59:59' "
+                                  "ORDER BY datetime(time);").arg(time).arg(time);
+        query.prepare(command);
+        if (query.exec()) {
+            QList<CemsDataRow> list;
+            while(query.next()) {
+                CemsDataRow element;
+                QSqlRecord record = query.record();
+                element.time = record.value("time").toString();
+                element.id = record.value("id").toString();
+                element.data1 = record.value("data1").toString();
+                element.data2 = record.value("data2").toString();
+                element.data3 = record.value("data3").toString();
+                list.append(element);
+            }
+            database.close();
+            return list;
+        } else {
+            qDebug() << "Select record error: HistoryData table does not exist.";
+        }
+    }
+
+    database.close();
+    return QList<CemsDataRow>();
+}
+
+void MyDatabase::removeOldHistoryData(int day)
+{
+    QSqlDatabase database = QSqlDatabase::database();
+    if (!database.tables().contains("HistoryData")) {
+        qDebug() << "Create record error: Accounts table does not exist.";
+    } else {
+        QSqlQuery query(database);
+
+        QString command = QString("DELETE FROM HistoryData WHERE time < datetime('now', '-%1 day');").arg(day);
+        query.prepare(command);
+        if (query.exec()) {
+            qDebug() << "Exec delete command done";
+        } else {
+            qDebug() << "Exec delete command error";
+        }
+    }
+    database.close();
+}

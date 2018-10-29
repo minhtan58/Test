@@ -48,7 +48,8 @@ public:
         HMI_CONNECTION_NETWORK_SCREEN,
         HMI_DATA_VIEW_SCREEN,
         HMI_VIEW_DATA_HISTORY_SCREEN,
-
+        HMI_VIEW_DATA_HISTORY_SCREEN,
+        
         /* Show popup */
         HMI_COMMON_POPUP,
         HMI_HIDE_POPUP,

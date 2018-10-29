@@ -1,11 +1,13 @@
 #include "ScreenAdapter.h"
 
-ScreenAdapter::ScreenAdapter(QObject *container, QObject *parent)
+ScreenAdapter::ScreenAdapter(QQmlApplicationEngine *qmlAppEngine, QObject *parent)
     : QObject(parent)
+    , m_qmlAppEngine(qmlAppEngine)
     , m_screenId(-1)
-    , m_screenContainer(container)
 {
-    //m_screenContainer = m_engine.rootObjects().at(0)->findChild<QQuickItem*>("screenContainer");
+    m_qmlAppEngine->rootContext()->setContextProperty("listHistory", nullptr);
+    m_screenContainer = m_qmlAppEngine->rootObjects().at(0)->findChild<QQuickItem*>("screenContainer");
+    connect(UIBridge::getInstance(), SIGNAL(hmiEvent(QString,int,QString)), this, SLOT(eventHandler(QString,int,QString)));
 }
 
 ScreenAdapter::~ScreenAdapter()
@@ -120,7 +122,7 @@ void ScreenAdapter::eventHandler(QString objectName, int eventId, QString param)
         }
         break;
     }
-    case EnumID::DB_RESPONSE_GET_HISTORY_DATA_FINISHED: {
+    case EnumID::HMI_RESPONSE_GET_HISTORY_DATA_FINISHED: {
         m_listHistory = new HistoryDataModel(this);
         m_listHistory->fetchData();
         m_qmlAppEngine->rootContext()->setContextProperty("listHistory", m_listHistory);

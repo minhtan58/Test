@@ -53,6 +53,5 @@ HEADERS += \
     Common/QmlValues.h \
     Connection/MyDatabase.h \
     Threads/DatabaseHandler.h \
-    HistoryData.h \
     Threads/HistoryDatahandler.h \
     Connection/MyHistoryData.h

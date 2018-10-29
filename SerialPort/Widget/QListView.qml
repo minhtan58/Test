@@ -27,7 +27,7 @@ ListView {
     Rectangle {
         anchors.fill: parent
         border.width: 1
-        border.color: "#FFFFFF"
+        border.color: "green"
         color: "#000000"
         opacity: 0.5
         z: -1
