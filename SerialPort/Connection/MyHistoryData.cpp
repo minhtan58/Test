@@ -92,7 +92,7 @@ void HistoryDataModel::fetchData()
 }
 
 void HistoryDataFeeder::run() {
-    //DLOG("Fetch data for HistoryDataListModel");
+    qDebug << "Fetch data for HistoryDataListModel";
     emit signalUpdateFetchDataStatus(FETCH_STARTING);
 
     QString searchTime = GETDPDATA(EnumID::DP_SEARCH_TIME_HISTORY_DATA);

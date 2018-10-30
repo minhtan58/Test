@@ -115,6 +115,7 @@ void ScreenAdapter::eventHandler(QString objectName, int eventId, QString param)
     Q_UNUSED(objectName)
     switch (eventId) {
     case EnumID::HMI_REQUEST_GET_HISTORY_DATA: {
+        qDebug() << "ScreenAdapter::eventHandler HMI_REQUEST_GET_HISTORY_DATA";
         SETDPDATA(EnumID::DP_SEARCH_TIME_HISTORY_DATA, param);
         if(m_listHistory) {
             m_listHistory->~HistoryDataModel();
@@ -123,6 +124,7 @@ void ScreenAdapter::eventHandler(QString objectName, int eventId, QString param)
         break;
     }
     case EnumID::HMI_RESPONSE_GET_HISTORY_DATA_FINISHED: {
+        qDebug() << "ScreenAdapter::eventHandler HMI_RESPONSE_GET_HISTORY_DATA_FINISHED";
         m_listHistory = new HistoryDataModel(this);
         m_listHistory->fetchData();
         m_qmlAppEngine->rootContext()->setContextProperty("listHistory", m_listHistory);

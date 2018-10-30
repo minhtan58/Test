@@ -16,6 +16,7 @@ public:
     void sendEvent(QString objectName, int EnumID, QString param);
     Q_INVOKABLE QString getDPData(int dpid);
     Q_INVOKABLE void setDPData(int dpid, QVariant value);
+    Q_INVOKABLE void log(QString msg);
 
 private:
     static UIBridge *m_uiBridge;

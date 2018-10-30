@@ -25,8 +25,8 @@ public:
     void initAppData();
 
 private:
-    int m_screenId;
     QQmlApplicationEngine *m_qmlAppEngine = nullptr;
+    int m_screenId;
     QObject* m_screenContainer = nullptr;
     QObject* m_screenView = nullptr;
     HistoryDataModel *m_listHistory = nullptr;

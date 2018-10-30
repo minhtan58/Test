@@ -27,3 +27,8 @@ void UIBridge::setDPData(int dpid, QVariant value)
 {
     ManagerData::getInstance()->setData(dpid, value.toString());
 }
+
+void UIBridge::log(QString msg)
+{
+    qDebug() << msg;
+}

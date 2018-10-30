@@ -10,27 +10,13 @@ void DatabaseHandler::eventHandler(QString objectName, int eventId, QString para
     Q_UNUSED(objectName)
     switch (eventId) {
     case EnumID::HMI_REQUEST_GET_HISTORY_DATA: {
+        qDebug() << "DatabaseHandler::eventHandler HMI_REQUEST_GET_HISTORY_DATA";
         QList<CemsDataRow> list;
         list = MyDatabase::getInstance()->getHistoryData(param);
         ManagerData::getInstance()->setHistoryDataList(list);
         SENDEVENT("" , EnumID::HMI_RESPONSE_GET_HISTORY_DATA_FINISHED, "");
         break;
     }
-//    case EnumID::HMI_REQUEST_ADD_MISSING_DATA_ROW: {
-//        QStringList dataRow = ManagerData::getInstance()->getWorkingDataRow();
-//        if (dataRow.size() == 11) {
-//            saveToMissingDb(dataRow);
-//        } else {
-//            qDebug << "Datarow to add missing data";
-//        }
-//        break;
-//    }
-//    case EnumID::HMI_REQUEST_REMOVE_MISSING_DATA_ROW: {
-//        if(!param.isEmpty()) {
-//            MyDatabase::getInstance()->removeSentMissingData(param);
-//        }
-//        break;
-//    }
     case EnumID::HMI_BUTTON_REQ_EXPORT: {
         SENDEVENT("" , EnumID::HMI_COMMON_POPUP, "3000,Export successful!");
         exportDataFile();
