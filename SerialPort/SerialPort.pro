@@ -27,7 +27,8 @@ SOURCES += main.cpp \
     Connection/MyDatabase.cpp \
     Threads/DatabaseHandler.cpp \
     Threads/HistoryDataHandler.cpp \
-    Connection/MyHistoryData.cpp
+    Connection/MyHistoryData.cpp \
+    TaskBarAdapter.cpp
 
 RESOURCES += qml.qrc
 
@@ -54,4 +55,5 @@ HEADERS += \
     Connection/MyDatabase.h \
     Threads/DatabaseHandler.h \
     Threads/HistoryDatahandler.h \
-    Connection/MyHistoryData.h
+    Connection/MyHistoryData.h \
+    TaskBarAdapter.h

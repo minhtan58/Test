@@ -6,12 +6,12 @@ TcpSocketHandler::TcpSocketHandler(QObject *parent) : QObject(parent) {
     SETDPDATA(EnumID::DP_NETWORK_STATUS, "Connect");
 }
 
-TcpSocketHandler::~TcpSocketHandler() {
-    if (m_tcpSocket && m_tcpSocket->m_socket->state() == QTcpSocket::ConnectedState) {
-        m_tcpSocket->disconnectFromHost();
-        m_tcpSocket->waitForDisconnected();
-    }
-}
+//TcpSocketHandler::~TcpSocketHandler() {
+//    if (m_tcpSocket && m_tcpSocket->m_socket->state() == QTcpSocket::ConnectedState) {
+//        m_tcpSocket->disconnectFromHost();
+//        m_tcpSocket->waitForDisconnected();
+//    }
+//}
 
 void TcpSocketHandler::setData() {
     QString value = m_tcpSocket->getData();

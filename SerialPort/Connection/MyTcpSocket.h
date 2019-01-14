@@ -26,8 +26,8 @@ public slots:
     void sendData(const QByteArray &data);
 
 private:
-    QTcpSocket *m_socket = nullptr;
     QString m_dataChange;
+    QTcpSocket *m_socket = nullptr;
 };
 
 #endif // MYTCPSOCKET_H

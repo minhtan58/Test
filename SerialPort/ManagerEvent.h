@@ -9,6 +9,7 @@
 #include "UIBridge.h"
 #include "MySerialPort.h"
 #include "MyTcpSocket.h"
+#include "TaskBarAdapter.h"
 #include "Enum.h"
 #include "ScreenAdapter.h"
 #include "BaseThreads.h"
@@ -31,6 +32,7 @@ private:
     MyTcpSocket *m_myTcpSocket = nullptr;
     ScreenAdapter *m_screenAdapter = nullptr;
     BaseThreads *m_baseThreads = nullptr;
+    TaskBarAdapter *m_taskBarAdapter = nullptr;
 
     void initWindow();
     void showScreen(int screenId);

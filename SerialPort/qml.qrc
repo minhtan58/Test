@@ -19,5 +19,6 @@
         <file>Screen/icp_disconnect_popup.qml</file>
         <file>Screen/ics_home.qml</file>
         <file>Screen/ics_login_form.qml</file>
+        <file>Screen/ics_taskbar.qml</file>
     </qresource>
 </RCC>

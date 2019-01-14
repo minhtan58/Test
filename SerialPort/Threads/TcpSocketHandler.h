@@ -15,7 +15,7 @@ class TcpSocketHandler : public QObject
     Q_OBJECT
 public:
     explicit TcpSocketHandler(QObject *parent = nullptr);
-    //~TcpSocketHandler();
+//    ~TcpSocketHandler();
 
 signals:
 

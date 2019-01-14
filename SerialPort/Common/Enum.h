@@ -19,6 +19,7 @@ public:
         DP_DAY,
         DP_MONTH,
         DP_YEAR,
+        DP_STATUS_ALARM_ON_COUNT,
 
         DP_DATE_DAY,
         DP_DATE_MONTH,
